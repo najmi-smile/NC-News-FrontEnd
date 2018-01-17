@@ -20,9 +20,10 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <div className = "container">
+            <header className="App-header"></header>
             <NavBar />
             <Switch>
-              <Route path='/' component ={ HomePage } />
+              <Route exact path='/' component ={ HomePage } />
               <Route path='/about' component ={ AboutPage } />
               <Route path='/contact' component ={ ContactPage } />
               <Route component = {NotFound} />
