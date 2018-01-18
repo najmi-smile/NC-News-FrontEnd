@@ -2,21 +2,35 @@ import React from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import '../css/Pre-Next.css';
 
+import Topics from './Topics';
+
+import GetArticles from '../httpRequests/GetArticles.js';
+import GetTopics from '../httpRequests/GetTopics.js';
+
 class HomePage extends React.Component {
   state = {
     articles : [],
-    page : null
+    page : null,
+    topics : []
   }
   componentDidMount(){
-    fetch('https://northcoders-news-api.herokuapp.com/api/articles')
-      .then(buffer => buffer.json())
-      .then(res => {
-        // console.log(res.articles);
+    GetArticles()
+    .then (res => {
+      this.setState({
+        articles : res.articles,
+        page : res.articles.length
+      })
+    })
+    .catch(console.log); 
+
+    GetTopics()
+      .then (res => {
+        console.log('topics', res.topics);
         this.setState({
-          articles : res.articles,
-          page : res.articles.length
+        topics: res.topics
         })
       })
+      .catch(console.log);   
   }
   handleClick = (option) => {
     console.log('option',option.target.id === 'next');
@@ -32,16 +46,17 @@ class HomePage extends React.Component {
     }   
   }
   render() {
-    const {articles,page} = this.state;
+    
+    const {articles,page, topics} = this.state;
+    console.log('render-topics',topics);
     let article = articles[page-1];
     return ( 
       <div className="row">
         <div className="col-md-8">
           <div className="well">
-          {/* <% include ./post %> */}
             <article>
               <header>
-                <h2>Latest Post</h2> 
+                <h2>Latest Article</h2> 
                 <div className="row">
                   <small>{article && article.title}</small>
                   <p><Link to=''> <span className = "fa fa-user"> {article && article.created_by}</span></Link></p>
@@ -82,8 +97,7 @@ class HomePage extends React.Component {
         </div>  
         <div className="col-md-4">
           <div className="well"> 
-              topics     
-            {/* <% include ./displayTopics %> */}
+            { topics && <Topics topics = {topics} /> } 
           </div> 
           <div className="well">
             users
