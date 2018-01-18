@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter,Route, Switch} from 'react-router-dom';
 
 import '../css/App.css';
+import '../css/style.css';
 import {Icon} from 'react-fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,8 +11,8 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
 import NotFound from './NotFound';
-
-import NavBar from './NavBar'
+import Footer from './Footer';
+import NavBar from './NavBar';
 
 class App extends Component {
   
@@ -20,7 +21,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <div className = "container">
-            <header className="App-header"></header>
+            <header className="App-header">
+              <img src ={require("../images/logo.png")} alt="NC Blog" className="logo"/>
+            </header>
             <NavBar />
             <Switch>
               <Route exact path='/' component ={ HomePage } />
@@ -28,6 +31,7 @@ class App extends Component {
               <Route path='/contact' component ={ ContactPage } />
               <Route component = {NotFound} />
             </Switch>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>      
