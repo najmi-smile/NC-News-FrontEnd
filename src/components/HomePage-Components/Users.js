@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GetUsers from '../../httpRequests/GetUsers';
+import GetUsers from '../../httpRequests/FetchData';
 
 
 class Users extends React.Component {
@@ -8,7 +8,7 @@ class Users extends React.Component {
     users : []
   }
   componentDidMount(){
-    GetUsers()
+    GetUsers('users')
       .then(res=>{
         this.setState({
           users : res.users

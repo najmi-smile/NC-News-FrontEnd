@@ -1,12 +1,12 @@
 import React from 'react';
-import GetUsers from '../httpRequests/GetUsers';
+import GetUsers from '../httpRequests/FetchData';
 
 class UsersPage extends React.Component {
   state = {
     users : []
   }
   componentDidMount(){
-    GetUsers()
+    GetUsers('users')
       .then(res=>{
         this.setState({
           users : res.users

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 
-import GetArticles from '../../httpRequests/GetArticles';
+import GetArticles from '../../httpRequests/FetchData';
 
 class Articles extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    GetArticles()
+    GetArticles('articles')
     .then (res => {
       this.setState({
         articles : res.articles,

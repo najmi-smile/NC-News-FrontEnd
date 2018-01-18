@@ -1,12 +1,12 @@
 import React from 'react';
-import GetComments from '../httpRequests/GetComments';
+import GetComments from '../httpRequests/FetchData';
 
 class CommentsPage extends React.Component {
   state = {
     comments : []
   }
   componentDidMount() {
-    GetComments()
+    GetComments('comments')
       .then(res=>{
         this.setState({
           comments : res

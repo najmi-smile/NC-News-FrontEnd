@@ -1,5 +1,5 @@
 import React from 'react';
-import GetArticles from '../httpRequests/GetArticles';
+import GetArticles from '../httpRequests/FetchData';
 
 class ArticlesPage extends React.Component {
   state = {
@@ -7,7 +7,7 @@ class ArticlesPage extends React.Component {
   }
 
   componentDidMount() {
-    GetArticles()
+    GetArticles('articles')
     .then (res => {
       this.setState({
         articles : res.articles

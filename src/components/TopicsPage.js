@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import GetTopics from '../httpRequests/GetTopics.js';
+import GetTopics from '../httpRequests/FetchData.js';
 import Topics from './HomePage-Components/Topics';
 
 class TopicsPage extends React.Component {
@@ -10,7 +10,7 @@ class TopicsPage extends React.Component {
   }
 
   componentDidMount(){
-    GetTopics()
+    GetTopics('topics')
       .then (res => {
         this.setState({
         topics: res.topics
