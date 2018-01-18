@@ -32,7 +32,7 @@ class CommentsPage extends React.Component {
     }
     return (
       <div>
-        {comments.length && commentNode}
+        {commentNode}
       </div>
     )
   }
