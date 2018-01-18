@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-import GetTopics from '../httpRequests/GetTopics.js';
+import GetTopics from '../../httpRequests/GetTopics.js';
 
 class Topics extends React.Component {
   state = {
