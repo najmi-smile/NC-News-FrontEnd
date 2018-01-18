@@ -3,9 +3,11 @@ import { Route, NavLink, Link } from 'react-router-dom';
 import '../css/Pre-Next.css';
 
 import Topics from './Topics';
+import Users from './Users';
+
 
 import GetArticles from '../httpRequests/GetArticles.js';
-import GetTopics from '../httpRequests/GetTopics.js';
+
 
 class HomePage extends React.Component {
   state = {
@@ -22,15 +24,6 @@ class HomePage extends React.Component {
       })
     })
     .catch(console.log); 
-
-    GetTopics()
-      .then (res => {
-        console.log('topics', res.topics);
-        this.setState({
-        topics: res.topics
-        })
-      })
-      .catch(console.log);   
   }
   handleClick = (option) => {
     console.log('option',option.target.id === 'next');
@@ -48,7 +41,6 @@ class HomePage extends React.Component {
   render() {
     
     const {articles,page, topics} = this.state;
-    console.log('render-topics',topics);
     let article = articles[page-1];
     return ( 
       <div className="row">
@@ -101,6 +93,7 @@ class HomePage extends React.Component {
           </div> 
           <div className="well">
             users
+            <Users />
             {/* <% include ./displayUsers %> */}
           </div>         
         </div>  
