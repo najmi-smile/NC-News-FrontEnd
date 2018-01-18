@@ -9,7 +9,7 @@ class Topics extends React.Component {
     topics : []
   }
   componentDidMount(){
-    GetTopics('topics')
+    GetTopics('/topics')
       .then (res => {
         this.setState({
         topics: res.topics
@@ -26,7 +26,7 @@ class Topics extends React.Component {
         <div className="row">
           <ul className="list-unstyled">
             {topics.map(topic => {
-              return <div className="col-sm-6" key={topic._id}><li ><Link to="">{topic.title}</Link></li></div>
+              return <div className="col-sm-6" key={topic._id}><li ><Link to={`topics/${topic.slug}/articles`}>{topic.title}</Link></li></div>
             })}
           </ul>                
         </div>

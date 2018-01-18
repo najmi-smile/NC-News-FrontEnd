@@ -8,7 +8,7 @@ class Users extends React.Component {
     users : []
   }
   componentDidMount(){
-    GetUsers('users')
+    GetUsers('/users')
       .then(res=>{
         this.setState({
           users : res.users
@@ -25,7 +25,7 @@ class Users extends React.Component {
         <div className="row">
           <ul className="list-unstyled">
             {users && users.map(user => {
-              return <div className="col-sm-6" key={user._id}><li ><Link to={user._id}>{user.name}</Link></li></div>
+              return <div className="col-sm-6" key={user._id}><li ><Link to={`users/${user.username}`}>{user.name}</Link></li></div>
             })}
           </ul>                
         </div>

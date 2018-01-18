@@ -6,7 +6,7 @@ class UsersPage extends React.Component {
     users : []
   }
   componentDidMount(){
-    GetUsers('users')
+    GetUsers('/users')
       .then(res=>{
         this.setState({
           users : res.users
@@ -18,7 +18,7 @@ class UsersPage extends React.Component {
   render () {
     const userNode = this.state.users.map(user => {
       return (
-        <ul>
+        <ul key={user._id}>
           <li>{ user.username }</li>
           <li>{ user.name }</li>
           <li>{ user.avatar_url }</li>

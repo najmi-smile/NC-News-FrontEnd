@@ -10,7 +10,11 @@ class TopicsPage extends React.Component {
   }
 
   componentDidMount(){
-    GetTopics('topics')
+    const url = this.props.location.pathname;
+
+    console.log(url);
+    const url1 = "/topics";
+    GetTopics(url1)
       .then (res => {
         this.setState({
         topics: res.topics
@@ -20,6 +24,7 @@ class TopicsPage extends React.Component {
   }
 
   render() {
+    
     const {topics} = this.state;
     let TopicNode;
     if(topics.length > 0) {

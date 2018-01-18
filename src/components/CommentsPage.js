@@ -6,7 +6,7 @@ class CommentsPage extends React.Component {
     comments : []
   }
   componentDidMount() {
-    GetComments('comments')
+    GetComments('/comments')
       .then(res=>{
         this.setState({
           comments : res

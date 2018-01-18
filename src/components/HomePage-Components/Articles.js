@@ -10,7 +10,7 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    GetArticles('articles')
+    GetArticles('/articles')
     .then (res => {
       this.setState({
         articles : res.articles,
