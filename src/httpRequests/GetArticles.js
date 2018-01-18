@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GetArticles = (state) => {
+const GetArticles = () => {
   return fetch('https://northcoders-news-api.herokuapp.com/api/articles')
     .then(buffer => buffer.json())
     .then(res => {

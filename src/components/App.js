@@ -7,12 +7,16 @@ import {Icon} from 'react-fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //  Importing Required Pages
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import ContactPage from './ContactPage';
-import NotFound from './NotFound';
-import Footer from './Footer';
-import NavBar from './NavBar';
+import HomePage     from './HomePage';
+import AboutPage    from './AboutPage';
+import ContactPage  from './ContactPage';
+import TopicsPage   from './TopicsPage';
+import ArticlesPage from './ArticlesPage';
+import UsersPage    from './UsersPage';
+import CommentsPage from './CommentsPage';
+import NotFound     from './NotFound';
+import Footer       from './Footer';
+import NavBar       from './NavBar';
 
 class App extends Component {
   
@@ -26,9 +30,15 @@ class App extends Component {
             </header>
             <NavBar />
             <Switch>
-              <Route exact path='/' component ={ HomePage } />
-              <Route path='/about' component ={ AboutPage } />
-              <Route path='/contact' component ={ ContactPage } />
+              <Route exact path='/'   component = { HomePage } />
+              <Route path='/about'    component = { AboutPage } />
+              <Route path='/contact'  component = { ContactPage } />
+              <Route path='/topics'   component = { TopicsPage } />
+              <Route path='/articles' component = { ArticlesPage } />
+              <Route path='/comments' component = { CommentsPage } />
+              <Route path='/users'    component = { UsersPage } />
+              
+              
               <Route component = {NotFound} />
             </Switch>
             <Footer />
