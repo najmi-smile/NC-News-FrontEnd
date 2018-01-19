@@ -6,7 +6,12 @@ class CommentsPage extends React.Component {
     comments : []
   }
   componentDidMount() {
-    GetComments('/comments')
+    const {id} = this.props.match.params;
+    let url = '/comments';
+    if(id) {
+      url = `/articles/${id}/comments`
+    }
+    GetComments(url)
       .then(res=>{
         this.setState({
           comments : res

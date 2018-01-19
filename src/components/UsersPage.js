@@ -5,8 +5,14 @@ class UsersPage extends React.Component {
   state = {
     users : []
   }
-  componentDidMount(){
-    GetUsers('/users')
+  componentDidMount() {
+    const {username} = this.props.match.params;
+    let url = '/users';
+    if(username) {
+      url = `/users/${username}`
+    }   
+
+    GetUsers(url)
       .then(res=>{
         this.setState({
           users : res.users

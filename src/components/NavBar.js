@@ -16,9 +16,9 @@ const NavBar = () => {
           <div className="collapse navbar-collapse drop_menu" id="content_details">
             <ul className="nav navbar-nav">
               <li><NavLink to="/articles">Articles</NavLink></li>
-              <li><NavLink to="/topics">Topics</NavLink></li>
-              <li><NavLink to="/users">Users</NavLink></li>
-              <li><NavLink to="/comments">Comments</NavLink></li>
+              {/* <li><NavLink to="/topics">Topics</NavLink></li> */}
+              {/* <li><NavLink to="/users">Users</NavLink></li> */}
+              {/* <li><NavLink to="/comments">Comments</NavLink></li> */}
               <li><NavLink to="/contact">Contact</NavLink></li>
               <li><NavLink to="/about">About</NavLink></li>
             </ul>    

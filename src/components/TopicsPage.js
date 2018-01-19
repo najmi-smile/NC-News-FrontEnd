@@ -10,9 +10,9 @@ class TopicsPage extends React.Component {
   }
 
   componentDidMount(){
-    const url = this.props.location.pathname;
+    const url = this.props.match.url;
 
-    console.log(url);
+    // console.log(url);
     const url1 = "/topics";
     GetTopics(url1)
       .then (res => {

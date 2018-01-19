@@ -7,7 +7,12 @@ class ArticlesPage extends React.Component {
   }
 
   componentDidMount() {
-    GetArticles('/articles')
+    const {topic} = this.props.match.params;
+    let url = '/articles';
+    if(topic) {
+      url = `/topics/${topic}/articles`
+    }   
+    GetArticles(url)
     .then (res => {
       this.setState({
         articles : res.articles
@@ -34,7 +39,7 @@ class ArticlesPage extends React.Component {
     }
     return(
       <div>        
-        <h2>Available Article</h2> 
+        <h2>Available Articles</h2> 
         { articles.length > 0 && articleNode }
           
       </div>
