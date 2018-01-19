@@ -1,0 +1,34 @@
+.article-parent {
+  /* border: 1px solid red; */
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.article-votes {
+  /* border: 1px solid green; */
+  height: 100px;;
+  float: left;
+  align-content: center;
+  text-align: center;
+}
+.article-votes h4 {
+  padding: 0;
+  margin: 0;
+}
+.article-overview {
+  float: left
+}
+.article-overview .article-img img{
+  position: relative;
+  background: lightslategray;
+  float: left;
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+.article-overview .article-info {
+  float: right;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}

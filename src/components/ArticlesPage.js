@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import GetArticles from '../httpRequests/FetchData';
+
+import '../css/ArticlesPage.css';
 
 class ArticlesPage extends React.Component {
   state = {
-    articles: []
+    articles: [],
+    url: ''
   }
 
   componentDidMount() {
@@ -15,30 +20,62 @@ class ArticlesPage extends React.Component {
     GetArticles(url)
     .then (res => {
       this.setState({
-        articles : res.articles
+        articles : res.articles,
+        url: url
       })
     })
     .catch(console.log);
+  }
+  
+  vote = (vote,id,index) => {
+    const url = `/articles/${id}?vote=${vote}`;
+    GetArticles(url,'PUT')
+      .then(res => {
+        const newArticles = this.state.articles.concat([])
+        newArticles[index] = res;
+        this.setState({
+          articles : newArticles
+        })
+      })
+      .catch(console.log);
   }
   render() {
     const { articles } = this.state;
     let articleNode;
     if(articles.length > 0) {
-      articleNode = articles.map(article => {
+      articleNode = articles.map((article,i) => {
         return (
-          <ul key={article._id}>
-            <li><h1>{article.created_by}</h1></li>
-            <li><p>{article.title}</p></li>
-            <li><small>{article.body}</small></li>
-            <li><span>{article.belongs_to}</span></li>
-            <li><span>{article.votes}</span></li>
-            <li><span>{article.comments}</span></li>
-          </ul>
+          <div key={article._id} className="article-parent row">
+            <div className="article-votes col-lg-1 col-md-1 col-sm-2">
+              <span id="up-arrow" type="button" 
+              className="btn glyphicon glyphicon-menu-up"
+              onClick={() => this.vote('up',article._id,i)}
+              />
+              <h4 id="vote">{article.votes}</h4>
+              <span id="down-arrow" type="button" 
+              className="btn glyphicon glyphicon-menu-down"
+              onClick={() => this.vote('down',article._id,i)}
+              />
+            </div>
+            <div className="article-overview col-lg-11 col-md-11 col-sm-10">
+              <div className="row">
+                <div className="col-lg-3 col-md-3 col-sm-6">
+                  <div className="article-img">
+                    <img />
+                  </div>
+                </div>
+                <div className="col-lg-9 col-md-9 col-sm-6">
+                  <h4>{article.title}</h4>
+                  <small>{article.created_by}</small>
+                </div>                  
+              </div>
+            </div>
+          </div>
         )
       })
     }
     return(
-      <div>        
+      <div className="well">        
         <h2>Available Articles</h2> 
         { articles.length > 0 && articleNode }
           

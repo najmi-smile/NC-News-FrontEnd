@@ -39,7 +39,7 @@ class TopicsPage extends React.Component {
       })
     }
     return (
-      <div>
+      <div className="well">
         <h1>Available Topics</h1>
         {topics.length > 0 && TopicNode}
       </div>

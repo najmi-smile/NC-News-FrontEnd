@@ -36,7 +36,7 @@ class CommentsPage extends React.Component {
       commentNode = <h2>Loading .......</h2>
     }
     return (
-      <div>
+      <div className="well">
         {commentNode}
       </div>
     )
