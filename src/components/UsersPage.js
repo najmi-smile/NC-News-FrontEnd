@@ -15,25 +15,28 @@ class UsersPage extends React.Component {
     GetUsers(url)
       .then(res=>{
         this.setState({
-          users : res
+          users : [res]
         })
       })
       .catch(console.log);
 
   }
   render () {
-    const userNode = this.state.users.map(user => {
-      return (
-        <ul key={user._id}>
-          <li>{ user.username }</li>
-          <li>{ user.name }</li>
-          <li>{ user.avatar_url }</li>
-        </ul>
-      )
-    })
+    let userNode;
+    if(this.state.users.length > 0){
+      userNode = this.state.users.map(user => {
+        return (
+          <ul key={user._id}>
+            <li>{ user.username }</li>
+            <li>{ user.name }</li>
+            <li>{ user.avatar_url }</li>
+          </ul>
+        )
+      })
+    }
     return (
       <div>
-        {userNode}
+        {this.state.users.length > 0 && userNode}
       </div>
     )
   }

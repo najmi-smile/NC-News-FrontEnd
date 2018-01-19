@@ -12,7 +12,6 @@ class Articles extends React.Component {
   componentDidMount() {
     GetArticles('/articles')
     .then (res => {
-      console.log('++',res);
       this.setState({
         articles : res.list_of_articles,
         page : res.articles_found
@@ -21,7 +20,6 @@ class Articles extends React.Component {
     .catch(console.log);
   }
   handleClick = (option) => {
-    // console.log('option',option.target.id === 'next');
     if(option.target.id === 'next' && this.state.page > 1){
       this.setState({      
         page : this.state.page - 1
