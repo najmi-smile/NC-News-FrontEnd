@@ -21,8 +21,6 @@ import NavBar       from './NavBar';
 class App extends Component {
   
   render() {
-    console.log('App -- > ', this.props);
-    
     return (
       <BrowserRouter>
         <div className="App">
@@ -39,7 +37,7 @@ class App extends Component {
               <Route path='/contact'  component = { ContactPage } />
               <Route path='/topics/:topic' component = { ArticlesPage }/>              
               <Route exact path='/articles' component = { ArticlesPage } />
-              <Route path='articles/:id/comments' component = { CommentsPage } />
+              <Route path='/articles/:id/comments' component = { CommentsPage } />
               <Route path='/users/:username'    component = { UsersPage } />
               
               

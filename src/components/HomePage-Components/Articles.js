@@ -64,7 +64,7 @@ class Articles extends React.Component {
         <footer>
           <div className="row">
             <div className="col-md-4">
-              <i className="fa fa-pencil">  {article && article.comments}    Comments</i>
+              <i className="fa fa-pencil"><Link to={`articles/${article && article._id}/comments`}>{article && article.comments} Comments </Link> </i>
             </div>
             <div className="col-md-4">
               <i className="fa fa-pencil">  {article && article.votes}  Votes</i>

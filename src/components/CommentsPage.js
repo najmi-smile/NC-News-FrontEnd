@@ -7,17 +7,15 @@ class CommentsPage extends React.Component {
   }
   componentDidMount() {
     const {id} = this.props.match.params;
-    let url = '/comments';
-    if(id) {
-      url = `/articles/${id}/comments`
-    }
-    GetComments(url)
-      .then(res=>{
-        this.setState({
-          comments : res
+    if(id) { 
+      GetComments(`/articles/${id}/comments`)
+        .then(res=>{
+          this.setState({
+            comments : res.comments
+          })
         })
-      })
-      .catch(console.log);
+        .catch(console.log);
+    }
 
   }
   render () {
@@ -34,6 +32,8 @@ class CommentsPage extends React.Component {
           </ul>
         )
       })
+    } else {
+      commentNode = <h2>Loading .......</h2>
     }
     return (
       <div>
