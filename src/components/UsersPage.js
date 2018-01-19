@@ -15,7 +15,7 @@ class UsersPage extends React.Component {
     GetUsers(url)
       .then(res=>{
         this.setState({
-          users : res.users
+          users : res
         })
       })
       .catch(console.log);

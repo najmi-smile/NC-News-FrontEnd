@@ -6,17 +6,19 @@ import '../css/style.css';
 import {Icon} from 'react-fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 //  Importing Required Pages
-import HomePage     from './HomePage';
-import AboutPage    from './AboutPage';
-import ContactPage  from './ContactPage';
-import TopicsPage   from './TopicsPage';
-import ArticlesPage from './ArticlesPage';
-import UsersPage    from './UsersPage';
-import CommentsPage from './CommentsPage';
-import NotFound     from './NotFound';
-import Footer       from './Footer';
-import NavBar       from './NavBar';
+import HomePage           from './HomePage';
+import AboutPage          from './AboutPage';
+import TopicsPage         from './TopicsPage';
+import ContactPage        from './ContactPage';
+import ArticlesPage       from './ArticlesPage';
+import SingleArticlePage  from './SingleArticlePage';
+import CommentsPage       from './CommentsPage';
+import UsersPage          from './UsersPage';
+import NotFound           from './NotFound';
+import NavBar             from './NavBar';
+import Footer             from './Footer';
 
 class App extends Component {
   
@@ -31,14 +33,13 @@ class App extends Component {
             <NavBar />
             <Switch>
               <Route exact path='/'   component = { HomePage } />
-
-              {/* GET Requests */}
-              <Route path='/about'    component = { AboutPage } />
-              <Route path='/contact'  component = { ContactPage } />
-              <Route path='/topics/:topic' component = { ArticlesPage }/>              
+              <Route exact path='/about'    component = { AboutPage } />
+              <Route exact path='/contact'  component = { ContactPage } />
+              <Route exact path='/topics/:topic' component = { ArticlesPage }/>              
               <Route exact path='/articles' component = { ArticlesPage } />
-              <Route path='/articles/:id/comments' component = { CommentsPage } />
-              <Route path='/users/:username'    component = { UsersPage } />
+              <Route exact path='/articles/:id' component = { SingleArticlePage } />
+              <Route exact path='/articles/:id/comments' component = { CommentsPage } />
+              <Route exact path='/users/:username'    component = { UsersPage } />
               
               
               <Route component = {NotFound} />

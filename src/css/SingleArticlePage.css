@@ -1,0 +1,18 @@
+
+.row-1 {
+  height: 500px;
+  background: yellow;
+  border: 1px solid green;
+}
+.col-1 {
+  height: 490px;
+
+  background: yellow;
+  border: 1px solid green;
+}
+.col-2 {
+  height: 490px;
+  width: 100%;
+  background: yellow;
+  border: 1px solid green;
+}

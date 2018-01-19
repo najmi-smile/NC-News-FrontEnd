@@ -12,7 +12,7 @@ class Topics extends React.Component {
     GetTopics('/topics')
       .then (res => {
         this.setState({
-        topics: res.topics
+        topics: res
         })
       })
       .catch(console.log);   

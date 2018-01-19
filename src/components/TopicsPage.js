@@ -17,7 +17,7 @@ class TopicsPage extends React.Component {
     GetTopics(url1)
       .then (res => {
         this.setState({
-        topics: res.topics
+        topics: res
         })
       })
       .catch(console.log);   

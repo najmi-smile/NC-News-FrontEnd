@@ -12,9 +12,10 @@ class Articles extends React.Component {
   componentDidMount() {
     GetArticles('/articles')
     .then (res => {
+      console.log('++',res);
       this.setState({
-        articles : res.articles,
-        page : res.articles.length
+        articles : res.list_of_articles,
+        page : res.articles_found
       })
     })
     .catch(console.log);

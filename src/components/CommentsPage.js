@@ -11,7 +11,7 @@ class CommentsPage extends React.Component {
       GetComments(`/articles/${id}/comments`)
         .then(res=>{
           this.setState({
-            comments : res.comments
+            comments : res.list_of_comments
           })
         })
         .catch(console.log);

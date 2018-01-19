@@ -20,7 +20,7 @@ class ArticlesPage extends React.Component {
     GetArticles(url)
     .then (res => {
       this.setState({
-        articles : res.articles,
+        articles : res.list_of_articles,
         url: url
       })
     })

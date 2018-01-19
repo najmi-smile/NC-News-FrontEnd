@@ -11,7 +11,7 @@ class Users extends React.Component {
     GetUsers('/users')
       .then(res=>{
         this.setState({
-          users : res.users
+          users : res
         })
       })
       .catch(console.log);
