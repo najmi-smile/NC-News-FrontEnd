@@ -19,7 +19,6 @@ class ArticlesPage extends React.Component {
     }   
     GetArticles(url)
     .then (res => {
-      // console.log('res',res);
       this.setState({
         articles : res.list_of_articles,
         url: url
@@ -46,26 +45,26 @@ class ArticlesPage extends React.Component {
     if(articles.length > 0) {
       articleNode = articles.map((article,i) => {
         return (
-          <div key={article._id} className="article-parent row">
-            <div className="article-votes col-lg-1 col-md-1 col-sm-2">
+          <div key={`${article._id}`} className="article-parent row">
+            <div key={`${article._id}-votes`} className="article-votes col-lg-1 col-md-1 col-sm-2">
               <span id="up-arrow" type="button" 
               className="btn glyphicon glyphicon-menu-up"
               onClick={() => this.vote('up',article._id,i)}
               />
-              <h4 id="vote">{article.votes}</h4>
+              <h4 key={`vote-${article._id}`} id="vote">{article.votes}</h4>
               <span id="down-arrow" type="button" 
               className="btn glyphicon glyphicon-menu-down"
               onClick={() => this.vote('down',article._id,i)}
               />
             </div>
-            <div className="article-overview col-lg-11 col-md-11 col-sm-10">
+            <div key={`${article._id}-overview`} className="article-overview col-lg-11 col-md-11 col-sm-10">
               <div className="row">
-                <div className="col-lg-3 col-md-3 col-sm-6">
+                <div key={`${article._id}-overview-img`} className="col-lg-3 col-md-3 col-sm-6">
                   <div className="article-img">
                     <img />
                   </div>
                 </div>
-                <div className="col-lg-9 col-md-9 col-sm-6">
+                <div key={`${article._id}-overview-body`} className="col-lg-9 col-md-9 col-sm-6">
                   <h4>{article.title}</h4>
                   <small>{article.created_by}</small>
                 </div>                  
