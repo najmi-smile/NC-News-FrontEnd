@@ -14,21 +14,42 @@
   padding: 0;
   margin: 0;
 }
-.article-overview {
-  float: left
+.article-overview div {
+  
+  /* position: relative; */
+  text-align: left;
+  /* float: left; */
+  margin-top: 10px;
+}
+.article-overview .article-img div {
+  display: inline-block;
+  padding-right: 20px;
+  border-right: 1px solid green;
+}
+.article-overview .article-img {
+  position: relative;
+  border-radius: 100%;
+  padding-right: 20px;
+  border-right: 1px solid green;
 }
 .article-overview .article-img img{
   position: relative;
   background: lightslategray;
   float: left;
-  border: 1px solid black;
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   border-radius: 100%;
 }
-.article-overview .article-info {
-  float: right;
+.article-overview .article-body div {
+  display: inline-block;
+  margin-left: 20px;
   border: 1px solid black;
-  height: 100%;
-  width: 100%;
+}
+.article-overview .article-body h4 {
+  padding: 0;
+  margin: 0;
+}
+.article-overview .article-body small {
+  padding: 0;
+  margin: 0;
 }

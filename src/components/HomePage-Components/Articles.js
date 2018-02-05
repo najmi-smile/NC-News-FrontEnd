@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import GetArticles from '../../httpRequests/FetchData';
 
