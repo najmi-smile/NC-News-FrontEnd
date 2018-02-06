@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import GetArticles from '../../httpRequests/FetchData';
 
@@ -34,6 +35,8 @@ class Articles extends React.Component {
   render() {
     const { articles,page } = this.state;
     let article = articles[page-1];
+    let time;
+    if(article) time = new Date(article.created_at);
     return(
       <article>
         <header>
@@ -63,13 +66,13 @@ class Articles extends React.Component {
         <footer>
           <div className="row">
             <div className="col-md-4">
-              <i className="fa fa-pencil"><Link to={`articles/${article && article._id}/comments`}>{article && article.comments} Comments </Link> </i>
+              <Link to={`articles/${article && article._id}/comments`}>View Comments </Link>
             </div>
             <div className="col-md-4">
               <i className="fa fa-pencil">  {article && article.votes}  Votes</i>
             </div>
             <div className="col-md-4">
-              <i className="fa fa-clock-o"> 14 day ago</i>
+              <i className="fa fa-clock-o"> {article && moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a') }</i>
             </div>
           </div>
         </footer> 
