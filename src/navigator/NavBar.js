@@ -1,42 +1,94 @@
 import React from 'react';
-import '../css/navbar.css';
+
 import {NavLink} from 'react-router-dom';
 const NavBar = () => {
   return(
-    <div className="nav-bar">
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-      
-          <div className="navbar-header">
-            <NavLink className="menu" to='#'><i className="fa fa-bars" id="menu_icon"></i></NavLink>
-            <NavLink className="navbar-brand" to="/">TheBlog</NavLink>
-          </div>
-          {/* <!--navbar-header close--> */}
-      
-          <div className="collapse navbar-collapse drop_menu" id="content_details">
-            <ul className="nav navbar-nav">
-              <li><NavLink to="/articles">Articles</NavLink></li>
-              {/* <li><NavLink to="/topics">Topics</NavLink></li> */}
-              {/* <li><NavLink to="/users">Users</NavLink></li> */}
-              {/* <li><NavLink to="/comments">Comments</NavLink></li> */}
-              <li><NavLink to="/contact">Contact</NavLink></li>
-              <li><NavLink to="/about">About</NavLink></li>
-            </ul>    
-            {/*<!--nav navbar-nav close--> */}
-            <ul className="nav navbar-nav navbar-right">
-              <li><NavLink to=""><span className="fa fa-user-plus"> Sign Up</span></NavLink></li>
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        <NavLink to='' className="navbar-item">
+        <span> The BLog</span>
+        </NavLink>
 
-              <li><NavLink to=""><span className="glyphicon glyphicon-log-in"> Login</span></NavLink></li>
-            </ul>
-            {/* <!--navbar-right close--> */}
-            
-          </div>
-          {/* <!--collapse navbar-collapse drop_menu close--> */}
-        </div>
-        {/* <!--container-fluid close--> */}
-      </nav>    {/*<!--navbar navbar-inverse close--> */}
-    </div>
-  );
+        <button className="button navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div className="navbar-menu">
+        <ul className="navbar-start">
+        <li className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
+                <NavLink to='' className="button">
+                  <span className="icon">
+                    <i className="fab fa-pied-piper-alt"></i>
+                  </span>
+                  <span>About</span>
+                </NavLink>
+              </p>
+            </div>
+          </li>
+          <li className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
+                <NavLink to='' className="button">
+                  <span className="icon">
+                    <i className="fas fa-assistive-listening-systems"></i>
+                  </span>
+                  <span>Contact</span>
+                </NavLink>
+              </p>
+            </div>
+          </li>
+        </ul>
+        <ul className="navbar-end">
+          <li className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
+                <NavLink to='' className="button">
+                  <span className="icon">
+                    <i className="fas fa-user-plus"></i>
+                  </span>
+                  <span>Sing Up</span>
+                </NavLink>
+              </p>
+            </div>
+          </li>
+          <li className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
+                <NavLink to='' className="button">
+                  <span className="icon">
+                    <i className="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Sing In</span>
+                </NavLink>
+              </p>
+            </div>
+          </li>
+          <li className="navbar-item">
+            <div className="field is-grouped">
+              <p className="control">
+                <NavLink to='' className="button">
+                  <span className="icon">
+                    <i className="fas fa-sign-out-alt"></i>
+                  </span>
+                  <span>Sing Out</span>
+                </NavLink>
+              </p>
+            </div>
+          </li>
+          
+        </ul>
+          
+        
+        
+
+        
+      </div>
+    </nav>
+  )
 };
 
 export default NavBar;
