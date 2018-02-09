@@ -4,7 +4,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        UP and running!
         <Article />
       </div>
     );

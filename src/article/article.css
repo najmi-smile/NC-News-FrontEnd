@@ -1,0 +1,53 @@
+
+.article{
+  margin: auto;
+  height: 100%;
+}
+
+.code {
+  display: block;
+  white-space: pre-wrap;
+  background-color: white;
+  height: 20%;
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  width: 0em;
+}
+
+/* .noTopBottomPadding{
+  padding-top: 0;
+  padding-bottom: 0;
+} */
+
+.lectureNotes{
+  border-radius: 0;
+}
+
+.articleRightPane{
+  /* height: 90vh; */
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.articleRightBody{
+  height: 80%;
+  padding: 0vw .6vw;
+  margin-top: 1vw;
+}
+
+.commentInput{
+  margin-bottom: 1vw;
+}
+
+#commentInputField{
+  height: 2.25em;
+  transition: height 2s ease;
+  resize: none;
+  border-radius: 0;
+}
+#commentInputField:focus{
+  height: 10em;
+  transition: height 2s ease;
+}

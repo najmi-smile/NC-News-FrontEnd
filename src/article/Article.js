@@ -1,5 +1,10 @@
 import React from 'react';
 import {fetchComments} from '../httpRequests';
+// import Comments from './Comments';
+import ArticleBody from './ArticleBody';
+import PostComment from './PostComment';
+import Comments from './Comments';
+import './article.css';
 
 
 
@@ -15,7 +20,8 @@ class Article extends React.Component {
       "created_at": 1514726078477,
       "votes": 10
     },
-    articleComments : null
+    articleComments : null,
+    articleID : "5a48e2bfae21fcf62286f08f"
   }
   componentDidMount(){
     this.fetchComments('/articles/5a48e2bfae21fcf62286f08f/comments')
@@ -31,10 +37,25 @@ class Article extends React.Component {
     .catch(console.log);
   }   //  fetchComments
   render(){
+    const { articleComments,article } = this.state;
     return(
-      <div>
-
-      </div>
+      <div className="article columns isWhite">
+        <div>
+          <ArticleBody article={article}/>
+        </div>
+        <div className='hero column is-one-third isWhite articleRightPane'>
+          <div className='hero-body articleRightBody isWhite customScroll'>
+            <div className="">
+              <div className='commentInput'>  
+                <PostComment />          
+              </div>
+              <div className=''>
+                <Comments />              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  //  className="article
     )   //  return
   } //  render
 
