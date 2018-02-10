@@ -1,11 +1,14 @@
 import React from 'react';
 import moment from 'moment';
-import VoteComment from './VoteComment';
-// import DeleteComment from './DeleteComment';
 import PT from "prop-types";
 import PostComment from './PostComment';
+import VoteComment from './VoteComment';
 import {fetchComments} from '../httpRequests';
 
+//	TODOs
+//  Postcomment needs refreshing the state, 
+//	passed the commentsFetch but i think that gets attached with postcomment so dont recognise state
+//	Authenticate user for deletion
 class Comments extends React.Component {
 	state = {
 		comments: null,
@@ -21,7 +24,6 @@ class Comments extends React.Component {
 		this.commentsFetch(articleId);
 	}
 	commentsFetch(articleId){
-	
 		articleId  =  articleId || this.state.articleId;
 		fetchComments(`/articles/${articleId}/comments`)
       .then(res => {
@@ -32,11 +34,23 @@ class Comments extends React.Component {
       .catch(console.log)
 	}
 
+	deleteComment(commentId) {
+		fetchComments(`/articles/${this.state.articleId}/${commentId}`, 'DELETE')
+			.then(res =>{
+				console.log(res)
+				this.commentsFetch(this.state.articleId);
+			})
+			.catch(console.log);
+	}
 	render() {
 		const { articleId,comments,users } = this.state;
 		var commentsNode;
     if(comments){
-      commentsNode = comments.map((comment,i) => {
+			commentsNode = comments
+			.sort((a,b) => {
+				return b.created_at > a.created_at;
+			})
+			.map((comment,i) => {
         let imgLink,username,name;
         users.forEach(user => {
           if (comment.created_by === user.username) {
@@ -67,7 +81,9 @@ class Comments extends React.Component {
 							</div> 												
 						</div>
 					<div className="media-right">
-						<button className="delete"></button>
+						<button className="delete"
+						onClick = {()=> this.deleteComment(comment._id)}
+						/>
 					</div>
 				</article >
         )
