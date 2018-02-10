@@ -3,6 +3,8 @@ import ArticleBody from './ArticleBody';
 import Comments from './Comments';
 import './article.css';
 class Article extends React.Component {
+
+  // TODO this can be just a function when called from other component
   state = {
     article:{
       "_id": "5a48e2bfae21fcf62286f08f",
@@ -73,9 +75,9 @@ class Article extends React.Component {
   }  // componentDidMount
 
   render(){
-    const { article, users, articleID } = this.state;
+    const { article, users } = this.state;
     let articleUsers;
-    if(articleID && users) articleUsers = true;
+    if(article && users) articleUsers = true;
     return(
       <div className="article columns isWhite">
         <div>
@@ -88,7 +90,7 @@ class Article extends React.Component {
             <div className=''>
               {articleUsers &&
                 <Comments 
-                  articleId={articleID}
+                  articleId={article._id}
                   users={users}
                 /> 
               }             
@@ -99,6 +101,6 @@ class Article extends React.Component {
     )   //  return
   } //  render
 
-}   //  class Articl
+}   //  class Article
 
 export default Article;

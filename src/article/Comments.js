@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import VoteComment from './VoteComment';
 // import DeleteComment from './DeleteComment';
 import PT from "prop-types";
@@ -29,39 +29,67 @@ class Comments extends React.Component {
       })
       .catch(console.log)
 	}
-	
+	voteComment(commentId){
+		console.log('**** voteComment is called',commentId);
+    const url = `/articles/${this.state.articleId}/${commentId}?vote=${'up'}`;
+    fetchComments(url,'PUT')
+      .then(res => {
+        this.commentsFetch(this.state.articleId);
+      })
+      .catch(console.log);
+  } //  voteComment()
 	render() {
-		const {articleId} = this.state;
-		return (
-			<div>
-				<div className='commentInput'>  
-          <PostComment />          
-        </div>
-				< article className="media" >
+		const { articleId,comments,users } = this.state;
+		var commentsNode;
+    if(comments){
+      commentsNode = comments.map((comment,i) => {
+        let imgLink,username,name;
+        users.forEach(user => {
+          if (comment.created_by === user.username) {
+            imgLink = user.avatar_url;
+            username = user.username;
+            name = user.name;
+          }
+        });
+      
+        return (
+					< article key={i} className="media" >
 					<figure className="media-left">
 						<p className="image is-64x64">
-							<img src={require('../images/avatar.png')} alt="user" />
+							<img src={ imgLink } alt="user" />
 						</p>
 					</figure>
-					<div className="media-content" style={{ overflow: 'hidden' }}>
-						<div className="content">
-							<p>
-								<strong>Commentor Name</strong><small>Date</small>
-								<br/>
-								comment body.....
-							</p>
-							{articleId && 
+					
+						<div className="media-content" style={{ overflow: 'hidden' }}>
+							<div className="content">
+								<p>
+									<strong>{name || username }</strong><small>{ ` ${moment(comment.created_at).format("MMM Do YY")}`}</small>
+									<br/>
+									<small>{comment.body}</small>
+								</p>
+								
 								<VoteComment 
-									articleId={articleId}  
-									commentId={'commentId'}
-								/> }
+									comment={comment}
+									articleId={articleId}
+								/>
+							</div> 												
 						</div>
-					</div>
+					
+
 					{/* {this.props.comment.user.id === this.props.authUser.uid ? <DeleteComment deleteUserComment={this.props.deleteUserComment} index={this.props.index} /> : null} */}
 					<div className="media-right">
 						<button className="delete"></button>
 					</div>
 				</article >
+        )
+      }); //  Map Finished   
+    } //  if comments
+		return (
+			<div>
+				<div className='commentInput'>  
+          <PostComment />          
+        </div>
+				{	commentsNode }
 			</div>
 		)
 	}	//	render()
