@@ -79,13 +79,13 @@ class Article extends React.Component {
     let articleUsers;
     if(article && users) articleUsers = true;
     return(
-      <div className="article columns isWhite">
-        <div>
+      <div className="article columns isDark">
+        <div className="hero column is-two-third">
           { article && 
             <ArticleBody article={article}/>
           }
         </div>
-        <div className='hero column is-one-third isWhite articleRightPane'>
+        <div className='hero column is-one-third'>
           <div className='hero-body articleRightBody isWhite customScroll'>
             <div className=''>
               {articleUsers &&

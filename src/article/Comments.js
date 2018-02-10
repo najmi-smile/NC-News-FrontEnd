@@ -29,15 +29,7 @@ class Comments extends React.Component {
       })
       .catch(console.log)
 	}
-	voteComment(commentId){
-		console.log('**** voteComment is called',commentId);
-    const url = `/articles/${this.state.articleId}/${commentId}?vote=${'up'}`;
-    fetchComments(url,'PUT')
-      .then(res => {
-        this.commentsFetch(this.state.articleId);
-      })
-      .catch(console.log);
-  } //  voteComment()
+
 	render() {
 		const { articleId,comments,users } = this.state;
 		var commentsNode;
@@ -51,7 +43,6 @@ class Comments extends React.Component {
             name = user.name;
           }
         });
-      
         return (
 					< article key={i} className="media" >
 					<figure className="media-left">
@@ -67,16 +58,12 @@ class Comments extends React.Component {
 									<br/>
 									<small>{comment.body}</small>
 								</p>
-								
 								<VoteComment 
 									comment={comment}
 									articleId={articleId}
 								/>
 							</div> 												
 						</div>
-					
-
-					{/* {this.props.comment.user.id === this.props.authUser.uid ? <DeleteComment deleteUserComment={this.props.deleteUserComment} index={this.props.index} /> : null} */}
 					<div className="media-right">
 						<button className="delete"></button>
 					</div>
@@ -85,7 +72,7 @@ class Comments extends React.Component {
       }); //  Map Finished   
     } //  if comments
 		return (
-			<div>
+			<div className="column">
 				<div className='commentInput'>  
           <PostComment />          
         </div>

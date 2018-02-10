@@ -1,9 +1,8 @@
 
 .article{
   margin: auto;
-  height: 100%;
+  height: 800px;
 }
-
 .code {
   display: block;
   white-space: pre-wrap;
@@ -16,23 +15,13 @@ body::-webkit-scrollbar {
   width: 0em;
 }
 
-/* .noTopBottomPadding{
-  padding-top: 0;
-  padding-bottom: 0;
-} */
-
 .lectureNotes{
   border-radius: 0;
 }
 
-.articleRightPane{
-  /* height: 90vh; */
-  height: 100%;
-  /* overflow: hidden; */
-}
-
 .articleRightBody{
-  height: 80%;
+
+  height: 770px;
   padding: 0vw .6vw;
   margin-top: 1vw;
 }
