@@ -27,8 +27,21 @@ export const fetchTopics =(url, method) => {
 }
 export const fetchComments =(url, method) => {
   method =  method || 'GET'
-  console.log('Before Fetch URL', url);
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{"method":method})
+  console.log('Before query to Comments URL', url);
+  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{ "method":method })
+    .then(buffer => buffer.json())
+    .then(res => {
+      return res;    
+    })
+}
+export const postComment =(url, update) => {
+  console.log('Before posting comment URL', url);
+  console.log('Before posting update is', update);
+  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{
+    method:'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(update)
+  })
     .then(buffer => buffer.json())
     .then(res => {
       return res;    

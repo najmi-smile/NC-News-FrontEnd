@@ -21,6 +21,8 @@ class Comments extends React.Component {
 		this.commentsFetch(articleId);
 	}
 	commentsFetch(articleId){
+	
+		articleId  =  articleId || this.state.articleId;
 		fetchComments(`/articles/${articleId}/comments`)
       .then(res => {
         this.setState({
@@ -70,11 +72,20 @@ class Comments extends React.Component {
 				</article >
         )
       }); //  Map Finished   
-    } //  if comments
+		} //  if comments
+		
+		//	TODO need to provide the username
 		return (
+
 			<div className="column">
-				<div className='commentInput'>  
-          <PostComment />          
+				<div className='commentInput'> 
+					{articleId && 
+						<PostComment 
+							commentsFetch={this.commentsFetch} 
+							username={ 'grumpy19' }
+							articleId={ articleId }
+						/> 
+					}         
         </div>
 				{	commentsNode }
 			</div>

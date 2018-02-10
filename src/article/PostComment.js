@@ -1,7 +1,6 @@
 import React from 'react';
 import PT from "prop-types";
-
-
+import { postComment } from '../httpRequests/index';
 class PostComment extends React.Component {
   state = {
     comment: '',
@@ -12,9 +11,16 @@ class PostComment extends React.Component {
     return (
       <div className="post-comments">
         <form className='field is-grouped' onSubmit={(e) => comment && this.postComment(e)}>
-          <section className='control is-expanded'>
-          <textarea id="commentInputField" className='input' maxLength="300" onKeyPress={this.handleKeyPress} onChange={this.changeHandler} value={comment} placeholder='write a comment...' />
-          </section>
+          <div className='control is-expanded'>
+            <textarea id="commentInputField" 
+              maxLength="300" 
+              className='input' 
+              value={comment} 
+              onChange={this.changeHandler} 
+              placeholder='write a comment...' 
+              onKeyPress={this.handleKeyPress} 
+            />
+          </div>
           <button className='control button is-pulled-right is-danger' type='submit'>Post comment</button>
         </form>
       </div>
@@ -40,23 +46,28 @@ class PostComment extends React.Component {
 
   postComment = (e) => {
     if (e) e.preventDefault();
-    // const comment = {
-    //   body: this.state.comment,
-    //   eventId: this.props.eventId,
-    //   userId: this.props.userId,
-    //   creationDate: new Date(Date.now()).toISOString(),
-    //   votes: 0,
-    //   likedBy : {start: 'start'}
-    // }
-    // CommentRef.postNewComment(comment, res => { res==='Success' ? this.setState({comment: ''}) : null });
-    
+    const {comment} = this.state;
+    this.setState({comment : ''});
+    const { commentsFetch, username, articleId } = this.props;    
+    const obj = {
+      body: comment,
+      created_by: username,
+      creationDate: new Date(Date.now()).toISOString(),
+      votes: 0
+    }
+    postComment(`/articles/${articleId}/addcomment`,obj)
+      .then(res => {
+        console.log(res);
+        // commentsFetch(articleId);
+      })
+      .catch(console.log);
   }
 }
 
-// PostComments.propTypes = {
-//   fetchComments: PT.func,
-//   eventId: PT.string,
-//   userID: PT.string
-// };
+PostComment.propTypes = {
+  commentsFetch: PT.func.isRequired,
+  username: PT.string.isRequired,
+  articleId: PT.string.isRequired
+};
 
 export default PostComment;
