@@ -1,13 +1,7 @@
 import React from 'react';
-import {fetchComments} from '../httpRequests';
-// import Comments from './Comments';
 import ArticleBody from './ArticleBody';
-import PostComment from './PostComment';
 import Comments from './Comments';
 import './article.css';
-
-
-
 class Article extends React.Component {
   state = {
     article:{
@@ -20,38 +14,84 @@ class Article extends React.Component {
       "created_at": 1514726078477,
       "votes": 10
     },
-    articleComments : null,
-    articleID : "5a48e2bfae21fcf62286f08f"
+
+    articleID : "5a48e2bfae21fcf62286f08f",
+    users : [
+      {
+        "_id": "5a48e2bfae21fcf62286f085",
+        "username": "grumpy19",
+        "name": "Paul Grump",
+        "avatar_url": "http://www.tumbit.com/profile-image/4/original/mr-grumpy.jpg",
+        "__v": 0,
+        "created_at": 1514726078470
+      },
+      {
+        "_id": "5a48e2bfae21fcf62286f086",
+        "username": "happyamy2016",
+        "name": "Amy Happy",
+        "avatar_url": "http://vignette1.wikia.nocookie.net/mrmen/images/7/7f/mr_happy.jpg/revision/latest?cb=20140102171729",
+        "__v": 0,
+        "created_at": 1514726078470
+      },
+      {
+        "_id": "5a48e2bfae21fcf62286f087",
+        "username": "cooljmessy",
+        "name": "Peter Messy",
+        "avatar_url": "http://i.imgur.com/wfx0neu.jpg",
+        "__v": 0,
+        "created_at": 1514726078470
+      },
+      {
+        "_id": "5a48e2bfae21fcf62286f088",
+        "username": "weegembump",
+        "name": "Gemma Bump",
+        "avatar_url": "http://www.upandrunning.co.uk/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/m/r/mr-bump.jpg",
+        "__v": 0,
+        "created_at": 1514726078470
+      },
+      {
+        "_id": "5a48e2bfae21fcf62286f089",
+        "username": "jessjelly",
+        "name": "Jess Jelly",
+        "avatar_url": "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg",
+        "__v": 0,
+        "created_at": 1514726078470
+      },
+      {
+        "_id": "5a48e2caae21fcf62286f1cc",
+        "username": "northcoder",
+        "name": "Awesome Northcoder",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/6791502?v=3&s=200",
+        "__v": 0,
+        "created_at": 1514726078470
+      }
+    ]
   }
   componentDidMount(){
-    this.fetchComments('/articles/5a48e2bfae21fcf62286f08f/comments')
+    // TODO need to receive the following
+    // const {article,users} = this.props;
   }  // componentDidMount
-  fetchComments(url){
-    fetchComments(url)
-    .then(res => {
-      console.log(res);
-      this.setState({
-        articleComments:res.list_of_comments
-      })
-    })
-    .catch(console.log);
-  }   //  fetchComments
+
   render(){
-    const { articleComments,article } = this.state;
+    const { article, users, articleID } = this.state;
+    let articleUsers;
+    if(articleID && users) articleUsers = true;
     return(
       <div className="article columns isWhite">
         <div>
-          <ArticleBody article={article}/>
+          { article && 
+            <ArticleBody article={article}/>
+          }
         </div>
         <div className='hero column is-one-third isWhite articleRightPane'>
           <div className='hero-body articleRightBody isWhite customScroll'>
-            <div className="">
-              <div className='commentInput'>  
-                <PostComment />          
-              </div>
-              <div className=''>
-                <Comments />              
-              </div>
+            <div className=''>
+              {articleUsers &&
+                <Comments 
+                  articleId={articleID}
+                  users={users}
+                /> 
+              }             
             </div>
           </div>
         </div>

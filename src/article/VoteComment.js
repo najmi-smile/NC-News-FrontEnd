@@ -1,10 +1,18 @@
 import React from 'react';
 import PT from "prop-types";
-
+import {fetchComments} from '../httpRequests';
 class VoteComment extends React.Component {
   state = {
     voteInc: false,
   }; 
+  vote(vote,commentId,index){
+    const url = `/articles/${this.state.articleId}/${commentId}?vote=${vote}`;
+    fetchComments(url,'PUT')
+      .then(res => {
+        this.commentsFetch(this.state.articleId);
+      })
+      .catch(console.log);
+  } //  voteComment()
   render() {
     // const {id, votes} = this.props.comment.comment;
     return (
