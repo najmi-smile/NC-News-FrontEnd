@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App container">
+        <div className="App">
           {/* <div className = "container"> */}
             <header className="App-header">
               <img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/>
