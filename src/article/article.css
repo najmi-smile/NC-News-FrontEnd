@@ -1,7 +1,12 @@
 
 .article{
   margin: auto;
-  height: 800px;
+  height: 650px;
+}
+article-body p {
+  text-align: justify;
+  text-justify: inter-word;
+  
 }
 .code {
   display: block;
@@ -10,26 +15,17 @@
   height: 20%;
   overflow-y: scroll;
 }
-
 body::-webkit-scrollbar {
   width: 0em;
 }
-
-.lectureNotes{
-  border-radius: 0;
-}
-
 .articleRightBody{
-
-  height: 770px;
+  height: 95%;
   padding: 0vw .6vw;
   margin-top: 1vw;
 }
-
 .commentInput{
   margin-bottom: 1vw;
 }
-
 #commentInputField{
   height: 2.25em;
   transition: height 2s ease;

@@ -30,7 +30,6 @@ class App extends Component {
               
               <Route component = {NotFound} />
             </Switch>
-            <Footer />
           {/* </div> */}
         </div>
       </BrowserRouter>      
