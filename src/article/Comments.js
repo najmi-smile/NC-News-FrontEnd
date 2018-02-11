@@ -4,6 +4,7 @@ import PT from "prop-types";
 import PostComment from './PostComment';
 import VoteComment from './VoteComment';
 import {fetchComments} from '../httpRequests';
+import { Link } from 'react-router-dom';
 
 //	TODOs
 //  Postcomment needs refreshing the state, 
@@ -51,19 +52,20 @@ class Comments extends React.Component {
 				return b.created_at > a.created_at;
 			})
 			.map((comment,i) => {
-        let imgLink,username,name;
+        let imgLink,username,name,userId;
         users.forEach(user => {
           if (comment.created_by === user.username) {
             imgLink = user.avatar_url;
             username = user.username;
-            name = user.name;
+						name = user.name;
+						userId = user._id;
           }
         });
         return (
 					< article key={i} className="media" >
 					<figure className="media-left">
 						<p className="image is-64x64">
-							<img src={ imgLink } alt="user" />
+							{<Link to={`users/${userId}`}>{<img src={ imgLink } alt="user" />}</Link>}
 						</p>
 					</figure>
 					

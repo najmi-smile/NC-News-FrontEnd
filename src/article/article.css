@@ -6,7 +6,15 @@
 article-body p {
   text-align: justify;
   text-justify: inter-word;
-  
+}
+.title a:hover{
+  color: #D8495E;
+  text-decoration: none;
+  background: none;
+}
+.title a{
+  color: inherit;
+  text-decoration: none;
 }
 .code {
   display: block;

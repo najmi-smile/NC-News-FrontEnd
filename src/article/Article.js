@@ -76,13 +76,19 @@ class Article extends React.Component {
 
   render(){
     const { article, users } = this.state;
+    const articleUser = users.filter(user => {
+      return user.username === article.created_by
+    })
     let articleUsers;
     if(article && users) articleUsers = true;
     return(
       <div className="article columns isDark">
         <div className="hero column is-two-third">
           { article && 
-            <ArticleBody article={article}/>
+            <ArticleBody 
+              article={article}
+              articleUser={articleUser[0]}
+            />
           }
         </div>
         <div className='hero column is-one-third'>

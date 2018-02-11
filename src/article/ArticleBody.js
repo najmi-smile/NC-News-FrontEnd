@@ -1,13 +1,14 @@
 import React from 'react';
 import Moment from "moment";
 import PT from "prop-types";
+import { Link } from 'react-router-dom';
 import VoteArticle from './voteArticle';
 import Footer from '../navigator/Footer';
 
-const ArticleBody = ({article}) => ( 
+const ArticleBody = ({article,articleUser}) => ( 
   <div className='column isDark'>
     <div className="title has-text-white">
-      {article && article.created_by}
+      {article && <Link to={`/users/${articleUser._id}`}>{article.created_by}</Link>}
       <span className="is-pulled-right subtitle has-text-white">
         {article && <VoteArticle article={article}/>}
       </span>
@@ -25,7 +26,8 @@ const ArticleBody = ({article}) => (
 )
 
 ArticleBody.propTypes = {
-  article: PT.object.isRequired
+  article: PT.object.isRequired,
+  articleUser: PT.object.isRequired
 };
 
 export default ArticleBody;

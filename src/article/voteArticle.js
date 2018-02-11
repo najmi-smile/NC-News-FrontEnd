@@ -32,7 +32,6 @@ class VoteArticle extends React.Component {
     .catch(console.log);
   }
   voteArticle = (vote) => {
-
     const { article } = this.state;
     const url = `/articles/${article._id}?vote=${vote}`;
     fetchArticles(url,'PUT')
