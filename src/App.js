@@ -7,20 +7,22 @@ import ContactPage  from './ContactPage';
 import AboutPage    from './AboutPage';
 import Footer       from './navigator/Footer';
 import NotFound     from './navigator/NotFound';
+import HomePage     from './home-page';
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App container">
           {/* <div className = "container"> */}
             <header className="App-header">
               <img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/>
             </header>
             <NavBar />
             <Switch>
-              <Route exact path='/'   component = {  Article } />
-              {/* <Route exact path='/about'    component = { AboutPage } />
-              <Route exact path='/contact'  component = { ContactPage } />
+              <Route exact path='/article'   component = {  Article } />
+              <Route exact path='/'    component = { HomePage } />
+             {/* <Route exact path='/about'    component = { AboutPage } />
+               <Route exact path='/contact'  component = { ContactPage } />
               <Route exact path='/topics/:topic/articles' component = { ArticlesPage }/>              
               <Route exact path='/articles' component = { ArticlesPage } />
               <Route exact path='/articles/:id' component = { SingleArticlePage } />
