@@ -34,26 +34,22 @@ class ArticlesPage extends React.Component {
       filteredArticles = this.filterArticles();      
     }  
     return(
-      <div>
-         <div className="input-group">
-            <input type="text" className="form-control"
-            placeholder='search blog for articles'
+      <div className="hero">
+        <div className="hero-head">
+          <input type="text" className="input-filter"
+            placeholder='search articles ...'
             onChange={this.handleChange}
             value={searchTerm}
-            />
-            <span className="input-group-btn">
-              <button className="btn btn-default" type="button">
-                <span className="glyphicon glyphicon-search"></span>
-              </button>
-            </span>
-          </div> 
-          <h2>Available Articles</h2> 
-          <div className="articles-list-view">
+          />
+        </div>
+        <div className='hero-body isWhite'>
+          <div className="home-left-side customScroll">
             { articles.length > 0 && <ArticleNode 
               filteredArticles={filteredArticles} 
               users={users}
             /> }
-          </div>       
+          </div>
+        </div>       
       </div>
     )
   }

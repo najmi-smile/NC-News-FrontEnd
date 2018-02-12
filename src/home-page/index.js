@@ -39,18 +39,14 @@ class HomePage extends React.Component {
     if(users && articles) articlesFlag = true;
       return(
         <div className="home-wrapper">
-          <div className="columns home-page isDark">
-            <div className="hero column is-one-third">
-              <div className='hero-body isWhite'>
-                <div className="home-left-side customScroll">
-                  { articlesFlag &&
-                      <ArticlesPage 
-                        articles={ articles }
-                        users={ users }
-                      />
-                  }
-                </div>
-              </div>
+          <div className="columns home-page">
+            <div className="column is-one-third">
+              { articlesFlag &&
+                  <ArticlesPage 
+                    articles={ articles }
+                    users={ users }
+                  />
+              }
             </div>  {/* is-one-third */}
             <div className='hero column is-two-third'>
               <div className='hero-body isWhite'>
