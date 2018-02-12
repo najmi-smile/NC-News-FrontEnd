@@ -2,9 +2,10 @@ import React from 'react';
 import PT from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Article from '../article/Article';
 
   export const ArticleNode = (props) => {
-    const {filteredArticles,users,selectArticle} = props;
+    const {filteredArticles,users} = props;
     let articleNode;
     if(filteredArticles) {
       articleNode = filteredArticles.map((article,i) => {
@@ -31,7 +32,7 @@ import moment from 'moment';
                   <p>
                     <strong>{name || username }</strong><small>{ ` ${moment(article.created_at).format("MMM Do YY")}`}</small>
                     <br/>
-                    <Link to="article"><small>{article.title}</small></Link>
+                    <Link to={`article/:${article._id}`}><small>{article.title}</small></Link>
                   </p>
                 </div> 												
               </div>
