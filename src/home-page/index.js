@@ -39,7 +39,7 @@ class HomePage extends React.Component {
     if(users && articles) articlesFlag = true;
       return(
         <div className="home-wrapper">
-          <div className="columns home-page">
+          <div className="columns">
             <div className="column is-one-third">
               { articlesFlag &&
                   <ArticlesPage 
@@ -48,10 +48,12 @@ class HomePage extends React.Component {
                   />
               }
             </div>  {/* is-one-third */}
-            <div className='hero column is-two-third'>
-              <div className='hero-body isWhite'>
-                <div className="home-right-side customScroll">
+            <div className='column is-two-third'>
+              <div className="home-right-side">
+                <div className="hero">
+                  <div className='hero-body isWhite'>
 
+                  </div>
                 </div>
               </div>
             </div>    {/* column is-two-third */}

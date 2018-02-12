@@ -1,9 +1,5 @@
-#overlay {
-  display:none;
-}
-
 body{
-  background-color: hsl(0, 0%, 21%);
+  background-color: #353535;
   height: 100vh;
   width: 100vw;
   padding: 0;
@@ -20,17 +16,12 @@ body{
   overflow: hidden;
 }
 
-.defaultPadding{
+/* .defaultPadding{
   padding: 1vw .5vw;
-}
+} */
 
 .verticalHalf{
   height: 50%
-}
-
-.noTBPadding{
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 .customScroll{

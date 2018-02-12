@@ -36,13 +36,16 @@ class ArticlesPage extends React.Component {
     return(
       <div className="hero">
         <div className="hero-head">
-          <input type="text" className="input-filter"
-            placeholder='search articles ...'
-            onChange={this.handleChange}
-            value={searchTerm}
-          />
+          <div>
+            <input type="text" className="input-filter"
+              placeholder='search articles ...'
+              onChange={this.handleChange}
+              value={searchTerm}
+            />
+          </div>
         </div>
         <div className='hero-body isWhite'>
+          <p style={{"font-size": '1em', color:'red'}} className="title">Articles found : {filteredArticles.length}</p>
           <div className="home-left-side customScroll">
             { articles.length > 0 && <ArticleNode 
               filteredArticles={filteredArticles} 
