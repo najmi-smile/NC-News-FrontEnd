@@ -25,7 +25,8 @@ class ArticlesPage extends React.Component {
       const body = article.body || article.title || article.belongs_to;
       return body.includes(this.state.searchTerm);
     })
-  }   
+  } 
+  
   render() {
     const { articles , users, searchTerm } = this.state;
     let filteredArticles;

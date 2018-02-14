@@ -1,8 +1,9 @@
 import React from 'react';
 import PT from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import Article from '../article/Article';
+import {fetchArticles} from '../httpRequests';
 
   export const ArticleNode = (props) => {
     const {filteredArticles,users} = props;
@@ -54,12 +55,13 @@ import Article from '../article/Article';
   }   //    render
 
   const deleteArticle = (articleId) => {
-		// fetchComments(`/articles/${articleId}`, 'DELETE')
-		// 	.then(res =>{
-		// 		console.log(res)
-				// this.commentsFetch(this.state.articleId);
-			// })
-			// .catch(console.log);
+		fetchArticles(`/articles/${articleId}`, 'DELETE')
+			.then(res =>{
+				// console.log(res)
+        // this.commentsFetch(this.state.articleId);
+        // <Redirect to="/" />
+			})
+			.catch(console.log);
 	}
 
 ArticleNode.propTypes = {

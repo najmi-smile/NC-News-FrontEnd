@@ -38,7 +38,7 @@ class Comments extends React.Component {
 	deleteComment(commentId) {
 		fetchComments(`/articles/${this.state.articleId}/${commentId}`, 'DELETE')
 			.then(res =>{
-				console.log(res)
+				// console.log(res)
 				this.commentsFetch(this.state.articleId);
 			})
 			.catch(console.log);

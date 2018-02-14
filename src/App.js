@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter,Route, Switch} from 'react-router-dom';
+import {BrowserRouter,Route, Switch, Link} from 'react-router-dom';
 
 import NavBar       from './navigator/NavBar';
 import Article      from './article/Article';
@@ -15,9 +15,9 @@ class App extends Component {
         <div className="App">
           {/* <div className = "container"> */}
             <header className="App-header">
-              <img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/>
+              <Link to="/"><img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/></Link>
             </header>
-            <NavBar />
+            {/* <NavBar /> */}
             <Switch>
               <Route exact path='/article/:articleId'   component = {  Article } />
               <Route exact path='/'    component = { HomePage } />
