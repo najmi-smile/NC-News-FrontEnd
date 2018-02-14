@@ -36,11 +36,11 @@ import {fetchArticles} from '../../httpRequests';
                   </p>
                 </div> 												
               </div>
-            <div className="media-right">
+            {/* <div className="media-right">
               <button className="delete"
               onClick = {()=> deleteArticle(article._id)}
               />
-            </div>
+            </div> */}
           </article >
         )
       }); //  Map Finished    

@@ -2,6 +2,7 @@ import React from 'react';
 import {fetchArticles,fetchUsers} from '../httpRequests';
 import ArticlesPage from './left-side/ArticlesPage';
 import Weather from './right-side/Weather';
+import {User} from './right-side/user';
 import './index.css';
 class HomePage extends React.Component {
   state = { 
@@ -30,32 +31,39 @@ class HomePage extends React.Component {
   }
   render(){
     const { users, articles } = this.state;
-    let flag;
-    if(articles.length > 0 && users.length > 0) flag = true;
-      return(
-        <div className="home-wrapper">
-          <div className="columns">
-            <div className="column is-one-third">
-              { flag &&
-                <ArticlesPage 
-                  users={ users } 
-                  articles={ articles }
-                />
-              }
-            </div>  {/* is-one-third */}
-            <div className='column is-two-third'>
-              <div className="home-right-side">
-                <div className="hero">
-                  <div className='hero-body isWhite'>
-                    <div><Weather/></div>
-                    <div>User's Details</div>
+    if(users && articles) {
+      const user = users[Math.round(Math.random()*users.length-1)];
+      const userArticles = articles.filter(article => {
+        return article.created_by === user.username;
+      });
+      let flag;
+      if(articles.length > 0 && users.length > 0) flag = true;
+        return(
+          <div className="home-wrapper">
+            <div className="columns">
+              <div className="column is-one-third">
+                { flag &&
+                  <ArticlesPage 
+                    users={ users } 
+                    articles={ articles }
+                  />
+                }
+              </div>  {/* is-one-third */}
+              <div className='column is-two-third'>
+                <div className="home-right-side">
+                  <div className="hero">
+                    <div className='hero-body isWhite'>
+                      <div><Weather/></div>
+                      <div><User user={user} userArticles={userArticles}/></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>    {/* column is-two-third */}
-           </div>  {/* columns */}
-        </div>  
-    )   //  return
+              </div>    {/* column is-two-third */}
+             </div>  {/* columns */}
+          </div>  
+      )   //  return
+    }   //    if(users, articles)
+    else return(<div>Loading .......</div>);
   } //  render
 
 }   //  class HomePage
