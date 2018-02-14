@@ -21,7 +21,7 @@ const ArticleBody = ({article,articleUser}) => (
       <p>{article && article.title}</p>
       <code className="js customScroll">{article && article.body}</code>
     </div>
-    <Footer />
+    {/* <Footer /> */}
   </div>
 )
 

@@ -5,17 +5,9 @@ import './index.css';
 class HomePage extends React.Component {
   state = { 
     users:null,
-    topics:null,
-    articles:null
+    topics:null
   }
   componentDidMount(){
-    fetchArticles('/articles')
-    .then (res => {
-      this.setState({
-        articles : res.list_of_articles
-      })
-    })
-    .catch(console.log);
     fetchTopics('/topics')
       .then (res => {
         this.setState({
@@ -34,17 +26,17 @@ class HomePage extends React.Component {
     
  
   render(){
-    const { users, topics, articles} = this.state;
-    let articlesFlag;
-    if(users && articles) articlesFlag = true;
+    const { users, topics } = this.state;
+    let flag;
+    if(users && topics) flag = true;
       return(
         <div className="home-wrapper">
           <div className="columns">
             <div className="column is-one-third">
-              { articlesFlag &&
+              { flag &&
                   <ArticlesPage 
-                    articles={ articles }
-                    users={ users }
+                    users={ users } 
+                    topics= { topics }
                   />
               }
             </div>  {/* is-one-third */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { fetchArticles } from '../httpRequests';
 import  {ArticleNode}  from './ArticleNode';
 import PT from 'prop-types';
 // import '../css/ArticlesPage.css';
@@ -7,13 +8,24 @@ class ArticlesPage extends React.Component {
   state = {
     articles: [],
     users : [],
+    topics: [],
     searchTerm:''
   }
   componentDidMount() {
+    this.FetchArticles('/articles');
     this.setState({
-      articles : this.props.articles,
-      users : this.props.users
+      users : this.props.users,
+      topics : this.props.topics
     })
+  }
+  FetchArticles(url){
+    fetchArticles(url)
+    .then (res => {
+      this.setState({
+        articles : res.list_of_articles
+      })
+    })
+    .catch(console.log);
   }
   handleChange = (e) => {
     this.setState({
@@ -26,9 +38,13 @@ class ArticlesPage extends React.Component {
       return body.includes(this.state.searchTerm);
     })
   } 
+  updatePane = (e) => {
+    const slug = e.target.value.toLowerCase();
+    this.FetchArticles(`/topics/${slug}/articles`);
+  }
   
   render() {
-    const { articles , users, searchTerm } = this.state;
+    const { articles , users, searchTerm, topics } = this.state;
     let filteredArticles;
     
     if(articles !== null) {
@@ -37,16 +53,36 @@ class ArticlesPage extends React.Component {
     return(
       <div className="hero">
         <div className="hero-head">
-          <div>
-            <input type="text" className="input-filter"
-              placeholder='search articles ...'
-              onChange={this.handleChange}
-              value={searchTerm}
-            />
-          </div>
+        <section className="field has-addons input-filter">
+          <p className="control is-expanded">
+            <input
+              className="input"
+              type="text"
+              placeholder="search articles ..."
+              onChange={this.handleChange}/>
+          </p>
+          <p className="control">
+            <span className="select">
+              <select onChange={(e)=>this.updatePane(e)}>
+                <option style={{fontSize:"10px"}}>Show All</option>
+                {topics && topics.map(topic => {
+                  return <option style={{fontSize:"10px"}}>{topic.title.toUpperCase()}</option>
+                })
+
+                }
+                {/* <option>Show All</option>
+                <option>Football</option>
+                <option>Cooking</option>
+                <option>Coding</option> */}
+              </select>
+            </span>
+          </p>
+        </section>
         </div>
         <div className='hero-body isWhite'>
-          <p style={{"font-size": '1em', color:'red'}} className="title">Articles found : {filteredArticles.length}</p>
+          <div className='container'>
+            <p style={{"fontSize": '1em', color:'red'}} className="title">Articles found : {filteredArticles.length}</p>
+          </div>
           <div className="home-left-side customScroll">
             { articles.length > 0 && <ArticleNode 
               filteredArticles={filteredArticles} 
@@ -59,9 +95,8 @@ class ArticlesPage extends React.Component {
   }
 }
 ArticlesPage.propTypes = {
-  articles : PT.array.isRequired,
   users : PT.array.isRequired,
-  selectArticle: PT.func.isRequired
+  topics: PT.array.isRequired
 }
 
 export default ArticlesPage;
