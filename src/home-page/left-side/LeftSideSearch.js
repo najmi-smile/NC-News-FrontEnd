@@ -16,8 +16,8 @@ export const LeftSideSearch = ({handleChange,updatePane, topics}) => {
           <span className="select">
             <select onChange={(e)=>updatePane(e)}>
               <option>Show All</option>
-              {topics && topics.map(topic => {
-                return <option>{topic.title.toUpperCase()}</option>
+              {topics && topics.map((topic, i) => {
+                return <option key={i}>{topic.title.toUpperCase()}</option>
               })}
             </select>
           </span>

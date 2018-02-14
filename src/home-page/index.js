@@ -1,20 +1,12 @@
 import React from 'react';
 import {fetchArticles,fetchUsers,fetchComments,fetchTopics} from '../httpRequests';
-import ArticlesPage from './ArticlesPage';
+import ArticlesPage from './left-side/ArticlesPage';
 import './index.css';
 class HomePage extends React.Component {
   state = { 
-    users:null,
-    topics:null
+    users:null
   }
   componentDidMount(){
-    fetchTopics('/topics')
-      .then (res => {
-        this.setState({
-        topics: res
-        })
-      })
-      .catch(console.log); 
     fetchUsers('/users')
     .then(res=>{
       this.setState({
@@ -26,18 +18,15 @@ class HomePage extends React.Component {
     
  
   render(){
-    const { users, topics } = this.state;
-    let flag;
-    if(users && topics) flag = true;
+    const { users } = this.state;
       return(
         <div className="home-wrapper">
           <div className="columns">
             <div className="column is-one-third">
-              { flag &&
-                  <ArticlesPage 
-                    users={ users } 
-                    topics= { topics }
-                  />
+              { users &&
+                <ArticlesPage 
+                  users={ users } 
+                />
               }
             </div>  {/* is-one-third */}
             <div className='column is-two-third'>

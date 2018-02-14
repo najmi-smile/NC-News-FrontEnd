@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchArticles } from '../httpRequests';
+import { fetchArticles, fetchTopics } from '../../httpRequests';
 import  {ArticleNode}  from './ArticleNode';
 import PT from 'prop-types';
 import {LeftSideSearch} from './LeftSideSearch';
-// import '../css/ArticlesPage.css';
+
 class ArticlesPage extends React.Component {
   state = {
     articles: [],
@@ -15,9 +15,15 @@ class ArticlesPage extends React.Component {
   componentDidMount() {
     this.FetchArticles('/articles');
     this.setState({
-      users : this.props.users,
-      topics : this.props.topics
+      users : this.props.users
     })
+    fetchTopics('/topics')
+      .then (res => {
+        this.setState({
+        topics: res
+        })
+      })
+      .catch(console.log); 
   }
   FetchArticles(url){
     fetchArticles(url)
@@ -77,8 +83,7 @@ class ArticlesPage extends React.Component {
   }
 }
 ArticlesPage.propTypes = {
-  users : PT.array.isRequired,
-  topics: PT.array.isRequired
+  users : PT.array.isRequired
 }
 
 export default ArticlesPage;
