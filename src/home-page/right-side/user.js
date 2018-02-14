@@ -36,7 +36,7 @@ class User extends React.Component {
         < article key={user._id} className="media" >
           <figure className="media-left">
             <p className="image is-64x64">
-              {<Link to={`users/${user.username}`}>{<img src={ user.avatar_url } alt="user" />}</Link>}
+              {<Link to={`/users/${user.username}`}>{<img src={ user.avatar_url } alt="user" />}</Link>}
             </p>
           </figure>
           
