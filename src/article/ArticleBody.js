@@ -8,7 +8,7 @@ import Footer from '../navigator/Footer';
 const ArticleBody = ({article,articleUser}) => ( 
   <div className='column isDark'>
     <div className="title has-text-white">
-      {article && <Link to={`/users/${articleUser._id}`}>{article.created_by}</Link>}
+      {article && <Link to={`/users/${articleUser.username}`}>{article.created_by}</Link>}
       <span className="is-pulled-right subtitle has-text-white">
         {article && <VoteArticle article={article}/>}
       </span>
