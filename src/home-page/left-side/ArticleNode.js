@@ -2,7 +2,6 @@ import React from 'react';
 import PT from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
-// import Article from '../article/Article';
 import {fetchArticles} from '../../httpRequests';
 
   export const ArticleNode = (props) => {

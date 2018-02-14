@@ -13,9 +13,9 @@ class ArticlesPage extends React.Component {
     searchTerm:''
   }
   componentDidMount() {
-    this.FetchArticles('/articles');
     this.setState({
-      users : this.props.users
+      users : this.props.users,
+      articles : this.props.articles
     })
     fetchTopics('/topics')
       .then (res => {
@@ -24,15 +24,6 @@ class ArticlesPage extends React.Component {
         })
       })
       .catch(console.log); 
-  }
-  FetchArticles(url){
-    fetchArticles(url)
-    .then (res => {
-      this.setState({
-        articles : res.list_of_articles
-      })
-    })
-    .catch(console.log);
   }
   handleChange = (e) => {
     this.setState({
@@ -83,7 +74,8 @@ class ArticlesPage extends React.Component {
   }
 }
 ArticlesPage.propTypes = {
-  users : PT.array.isRequired
+  users : PT.array.isRequired,
+  articles : PT.array.isRequired
 }
 
 export default ArticlesPage;
