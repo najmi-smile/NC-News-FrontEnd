@@ -23,7 +23,7 @@ import {fetchArticles} from '../../httpRequests';
           < article key={i} className="media" >
             <figure className="media-left">
               <p className="image is-64x64">
-                {<Link to={`users/${userId}`}>{<img src={ imgLink } alt="user" />}</Link>}
+                {<Link to={`users/${username}`}>{<img src={ imgLink } alt="user" />}</Link>}
               </p>
             </figure>
             

@@ -2,15 +2,13 @@ import React from 'react';
 import {fetchArticles,fetchUsers} from '../httpRequests';
 import ArticlesPage from './left-side/ArticlesPage';
 import Weather from './right-side/Weather';
-import {User} from './right-side/user';
+import User from './right-side/user';
 import './index.css';
 class HomePage extends React.Component {
   state = { 
     users:[],
-    articles: []
   }
   componentDidMount(){
-    this.FetchArticles('/articles');
     fetchUsers('/users')
     .then(res=>{
       this.setState({
@@ -19,42 +17,24 @@ class HomePage extends React.Component {
     })
     .catch(console.log);
   }  // componentDidMount
-    
-  FetchArticles(url){
-    fetchArticles(url)
-    .then (res => {
-      this.setState({
-        articles : res.list_of_articles
-      })
-    })
-    .catch(console.log);
-  }
   render(){
-    const { users, articles } = this.state;
-    if(users && articles) {
+    const { users } = this.state;
+    if(users.length > 0) {
       const user = users[Math.round(Math.random()*users.length-1)];
-      const userArticles = articles.filter(article => {
-        return article.created_by === user.username;
-      });
-      let flag;
-      if(articles.length > 0 && users.length > 0) flag = true;
         return(
           <div className="home-wrapper">
             <div className="columns">
               <div className="column is-one-third">
-                { flag &&
-                  <ArticlesPage 
-                    users={ users } 
-                    articles={ articles }
-                  />
-                }
+                <ArticlesPage 
+                  users={ users } 
+                />
               </div>  {/* is-one-third */}
               <div className='column is-two-third'>
                 <div className="home-right-side">
                   <div className="hero">
                     <div className='hero-body isWhite'>
                       <div><Weather/></div>
-                      <div><User user={user} userArticles={userArticles}/></div>
+                      <div>{user && <User userName={user.username}/>}</div>
                     </div>
                   </div>
                 </div>

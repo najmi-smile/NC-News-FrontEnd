@@ -8,15 +8,17 @@ import {LeftSideSearch} from './LeftSideSearch';
 class ArticlesPage extends React.Component {
   state = {
     articles: [],
-    users : [],
     topics: [],
     searchTerm:''
   }
   componentDidMount() {
-    this.setState({
-      users : this.props.users,
-      articles : this.props.articles
+    fetchArticles('/articles')
+    .then (res => {
+      this.setState({
+        articles : res.list_of_articles
+      })
     })
+    .catch(console.log);
     fetchTopics('/topics')
       .then (res => {
         this.setState({
@@ -45,12 +47,16 @@ class ArticlesPage extends React.Component {
   }
   
   render() {
-    const { articles , users, searchTerm, topics } = this.state;
-    let filteredArticles;
-    
+    const { articles, searchTerm, topics } = this.state;
+    const { users } = this.props;
+
+    var filteredArticles;
     if(articles !== null) {
       filteredArticles = this.filterArticles();      
     }  
+    var flag;
+    if (users && filteredArticles) flag = true;
+    
     return(
       <div className="hero">
         <LeftSideSearch 
@@ -63,7 +69,7 @@ class ArticlesPage extends React.Component {
             <p style={{"fontSize": '1em', color:'red'}} className="title">Blog Articles found : {filteredArticles.length}</p>
           </div>
           <div className="home-left-side customScroll">
-            { articles.length > 0 && <ArticleNode 
+            { flag && <ArticleNode 
               filteredArticles={filteredArticles} 
               users={users}
             /> }
@@ -74,8 +80,7 @@ class ArticlesPage extends React.Component {
   }
 }
 ArticlesPage.propTypes = {
-  users : PT.array.isRequired,
-  articles : PT.array.isRequired
+  users : PT.array.isRequired
 }
 
 export default ArticlesPage;

@@ -8,31 +8,23 @@ import AboutPage    from './AboutPage';
 import Footer       from './navigator/Footer';
 import NotFound     from './navigator/NotFound';
 import HomePage     from './home-page';
+import User         from './home-page/right-side/user';
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          {/* <div className = "container"> */}
-            <header className="App-header">
-              <Link to="/"><img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/></Link>
-            </header>
-            {/* <NavBar /> */}
-            <Switch>
-              <Route exact path='/article/:articleId'   component = {  Article } />
-              <Route exact path='/'    component = { HomePage } />
-             {/* <Route exact path='/about'    component = { AboutPage } />
-               <Route exact path='/contact'  component = { ContactPage } />
-              <Route exact path='/topics/:topic/articles' component = { ArticlesPage }/>              
-              <Route exact path='/articles' component = { ArticlesPage } />
-              <Route exact path='/articles/:id' component = { SingleArticlePage } />
-              <Route exact path='/articles/:id/comments' component = { CommentsPage } />
-              <Route exact path='/users/:username'    component = { UsersPage } /> */}
-              
-              
-              <Route component = {NotFound} />
-            </Switch>
-          {/* </div> */}
+          <header className="App-header">
+            <Link to="/"><img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/></Link>
+          </header>
+          {/* <NavBar /> */}
+          <Switch>
+            <Route exact path='/article/:articleId'   component = {  Article } />
+            <Route exact path='/'    component = { HomePage } />
+            <Route exact path='/users/:username'    component = { User } />
+            
+            <Route component = {NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>      
     );
