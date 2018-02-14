@@ -12,13 +12,7 @@ class ArticlesPage extends React.Component {
     searchTerm:''
   }
   componentDidMount() {
-    fetchArticles('/articles')
-    .then (res => {
-      this.setState({
-        articles : res.list_of_articles
-      })
-    })
-    .catch(console.log);
+    this.FetchArticles('/articles');
     fetchTopics('/topics')
       .then (res => {
         this.setState({
@@ -38,6 +32,15 @@ class ArticlesPage extends React.Component {
       return body.includes(this.state.searchTerm);
     })
   } 
+  FetchArticles = (url) => {
+    fetchArticles(url)
+    .then (res => {
+      this.setState({
+        articles : res.list_of_articles
+      })
+    })
+    .catch(console.log);
+  }
   updatePane = (e) => {
     let url;
     const slug = e.target.value.toLowerCase();
@@ -56,7 +59,7 @@ class ArticlesPage extends React.Component {
     }  
     var flag;
     if (users && filteredArticles) flag = true;
-    
+
     return(
       <div className="hero">
         <LeftSideSearch 
