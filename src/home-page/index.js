@@ -1,6 +1,7 @@
 import React from 'react';
 import {fetchArticles,fetchUsers,fetchComments,fetchTopics} from '../httpRequests';
 import ArticlesPage from './left-side/ArticlesPage';
+import Weather from './right-side/Weather';
 import './index.css';
 class HomePage extends React.Component {
   state = { 
@@ -33,7 +34,7 @@ class HomePage extends React.Component {
               <div className="home-right-side">
                 <div className="hero">
                   <div className='hero-body isWhite'>
-
+                    <div><Weather/></div>
                   </div>
                 </div>
               </div>
