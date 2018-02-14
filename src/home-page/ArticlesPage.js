@@ -39,8 +39,11 @@ class ArticlesPage extends React.Component {
     })
   } 
   updatePane = (e) => {
+    let url;
     const slug = e.target.value.toLowerCase();
-    this.FetchArticles(`/topics/${slug}/articles`);
+    if (slug === 'show all') url = '/articles';
+    else url = `/topics/${slug}/articles`;
+    this.FetchArticles(url);
   }
   
   render() {
@@ -58,7 +61,7 @@ class ArticlesPage extends React.Component {
             <input
               className="input"
               type="text"
-              placeholder="search articles ..."
+              placeholder="search articles/choose a catagory"
               onChange={this.handleChange}/>
           </p>
           <p className="control">
@@ -67,13 +70,7 @@ class ArticlesPage extends React.Component {
                 <option style={{fontSize:"10px"}}>Show All</option>
                 {topics && topics.map(topic => {
                   return <option style={{fontSize:"10px"}}>{topic.title.toUpperCase()}</option>
-                })
-
-                }
-                {/* <option>Show All</option>
-                <option>Football</option>
-                <option>Cooking</option>
-                <option>Coding</option> */}
+                })}
               </select>
             </span>
           </p>
