@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchArticles } from '../httpRequests';
 import  {ArticleNode}  from './ArticleNode';
 import PT from 'prop-types';
+import {LeftSideSearch} from './LeftSideSearch';
 // import '../css/ArticlesPage.css';
 class ArticlesPage extends React.Component {
   state = {
@@ -55,30 +56,14 @@ class ArticlesPage extends React.Component {
     }  
     return(
       <div className="hero">
-        <div className="hero-head">
-        <section className="field has-addons input-filter">
-          <p className="control is-expanded">
-            <input
-              className="input"
-              type="text"
-              placeholder="search articles/choose a catagory"
-              onChange={this.handleChange}/>
-          </p>
-          <p className="control">
-            <span className="select">
-              <select onChange={(e)=>this.updatePane(e)}>
-                <option style={{fontSize:"10px"}}>Show All</option>
-                {topics && topics.map(topic => {
-                  return <option style={{fontSize:"10px"}}>{topic.title.toUpperCase()}</option>
-                })}
-              </select>
-            </span>
-          </p>
-        </section>
-        </div>
+        <LeftSideSearch 
+        updatePane = {this.updatePane} 
+        handleChange={this.handleChange} 
+        topics={topics}
+      />
         <div className='hero-body isWhite'>
           <div className='container'>
-            <p style={{"fontSize": '1em', color:'red'}} className="title">Articles found : {filteredArticles.length}</p>
+            <p style={{"fontSize": '1em', color:'red'}} className="title">Blog Articles found : {filteredArticles.length}</p>
           </div>
           <div className="home-left-side customScroll">
             { articles.length > 0 && <ArticleNode 
