@@ -14,10 +14,3 @@ they have added.
 
 You will be getting the data from our Northcoders News API server.
 
-### Goals Achived
-
-As it was a full stack application, the following are the learning outcomes 
-1. better understanding of planing in advance
-2. how react make http request
-3. the importance of the state offers by react
-4. visual DOM of react
