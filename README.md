@@ -30,9 +30,12 @@ below.
 
     $ npm install(dependenceis)
 
-You will be getting the data from our Northcoders News API server.
+You will be getting the data from our [News API](https://github.com/najmi-smile/BE-FT-northcoders-news) server. [WEB LINK](https://quiet-shore-88770.herokuapp.com/)
 ### Start Application
 
     $ npm start 
+
+### Technologies
+    React for UI
 
 
