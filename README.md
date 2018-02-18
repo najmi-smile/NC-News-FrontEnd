@@ -1,4 +1,5 @@
 ## Northcoders News
+[Live Preview](https://ncoders-news.herokuapp.com/)
 
 Northcoders News is a social news aggregation, web content rating, and discussion website. It is similar to [Reddit](https://www.reddit.com/)
 
@@ -39,7 +40,7 @@ You will be getting the data from our [News API](https://github.com/najmi-smile/
   [React](https://reactjs.org/) for UI
 
   [Webpack](https://webpack.js.org/) for Build
-  
+
   [Heroku](https://www.heroku.com/) for Production
 
 
