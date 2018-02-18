@@ -23,12 +23,16 @@ below.
     5.6.0
 
 ### How To Install Repo
-$. git clone https://github.com/najmi-smile/FE-FT-NC-News.git
-$. cd FE-FT-NC-News
-$. npm install(dependenceis)
+
+    $ git clone https://github.com/najmi-smile/FE-FT-NC-News.git
+
+    $ cd FE-FT-NC-News
+
+    $ npm install(dependenceis)
 
 You will be getting the data from our Northcoders News API server.
 ### Start Application
-$ npm start 
+
+    $ npm start 
 
 
