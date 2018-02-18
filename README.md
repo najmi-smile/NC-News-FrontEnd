@@ -6,11 +6,29 @@ Northcoders News has articles which are divided into topics. Each article has us
 Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments which
 they have added.
 
-### How TO Use
-1. Clone the repo
-2. cd into to the project folder
-3. npm install dependenceis
-4. npm start to run the project on the local server
+
+### Requirements
+For development, you will only need [Node.js](https://nodejs.org/en/) installed on your environement. 
+An approperiate Code Editor, I used VS [Code](https://code.visualstudio.com/)
+
+#### Node 
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+You should be able to run the following command after the installation procedure
+below.
+
+    $ node --version
+    v8.9.0
+
+    $ npm --version
+    5.6.0
+
+### How To Install Repo
+$. git clone https://github.com/najmi-smile/FE-FT-NC-News.git
+$. cd FE-FT-NC-News
+$. npm install(dependenceis)
 
 You will be getting the data from our Northcoders News API server.
+### Start Application
+$ npm start 
+
 
