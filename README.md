@@ -36,8 +36,8 @@ You will be getting the data from our [News API](https://github.com/najmi-smile/
     $ npm start 
 
 ### Technologies
-    [React](https://reactjs.org/) for UI
-    [Webpack](https://webpack.js.org/) for Build
-    [Heroku](https://www.heroku.com/) for Production
+  [React](https://reactjs.org/) for UI
+  [Webpack](https://webpack.js.org/) for Build
+  [Heroku](https://www.heroku.com/) for Production
 
 
