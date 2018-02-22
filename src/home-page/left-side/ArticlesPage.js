@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { fetchArticles, fetchTopics } from '../../httpRequests';
 import  {ArticleNode}  from './ArticleNode';
 import PT from 'prop-types';
@@ -16,7 +15,7 @@ class ArticlesPage extends React.Component {
     fetchTopics('/topics')
       .then (res => {
         this.setState({
-        topics: res
+        topics: res.topics
         })
       })
       .catch(console.log); 
@@ -50,7 +49,7 @@ class ArticlesPage extends React.Component {
   }
   
   render() {
-    const { articles, searchTerm, topics } = this.state;
+    const { articles, topics } = this.state;
     const { users } = this.props;
 
     var filteredArticles;

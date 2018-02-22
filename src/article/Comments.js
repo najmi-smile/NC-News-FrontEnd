@@ -52,13 +52,12 @@ class Comments extends React.Component {
 				return b.created_at > a.created_at;
 			})
 			.map((comment,i) => {
-        let imgLink,username,name,userId;
+        let imgLink,username,name;
         users.forEach(user => {
           if (comment.created_by === user.username) {
             imgLink = user.avatar_url;
             username = user.username;
 						name = user.name;
-						userId = user._id;
           }
         });
         return (

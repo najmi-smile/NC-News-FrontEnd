@@ -4,12 +4,10 @@ import {fetchArticles} from '../httpRequests';
 class VoteArticle extends React.Component {
   state = {
     article: null,
-    articleId: null,
     voteInc : 'false'
   }
-  //  TODO  need sorting why class is not been changed
   componentDidMount(){
-    const {	article, articleId } = this.props;
+    const {	article } = this.props;
     this.setState({
       article : article,
       voteInc: 'false'

@@ -1,6 +1,5 @@
 export const fetchArticles =(url, method) => {
   method =  method || 'GET'
-  console.log('Before Fetch URL', url);
   return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{"method":method})
     .then(buffer => buffer.json())
     .then(res => {
@@ -9,7 +8,6 @@ export const fetchArticles =(url, method) => {
 }
 export const fetchUsers =(url, method) => {
   method =  method || 'GET'
-  console.log('Before Fetch URL', url);
   return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{"method":method})
     .then(buffer => buffer.json())
     .then(res => {
@@ -18,7 +16,6 @@ export const fetchUsers =(url, method) => {
 }
 export const fetchTopics =(url, method) => {
   method =  method || 'GET'
-  console.log('Before Fetch URL', url);
   return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{"method":method})
     .then(buffer => buffer.json())
     .then(res => {
@@ -27,7 +24,6 @@ export const fetchTopics =(url, method) => {
 }
 export const fetchComments =(url, method) => {
   method =  method || 'GET'
-  console.log('Before query to Comments URL', url);
   return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{ "method":method })
     .then(buffer => buffer.json())
     .then(res => {
@@ -35,8 +31,6 @@ export const fetchComments =(url, method) => {
     })
 }
 export const postComment =(url, update) => {
-  console.log('Before posting comment URL', url);
-  console.log('Before posting update is', update);
   return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{
     method:'POST',
     headers:{'Content-Type': 'application/json'},

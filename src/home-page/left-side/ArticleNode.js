@@ -1,21 +1,19 @@
 import React from 'react';
 import PT from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
-import {fetchArticles} from '../../httpRequests';
 
   export const ArticleNode = (props) => {
     const {filteredArticles,users} = props;
     let articleNode;
     if(filteredArticles) {
       articleNode = filteredArticles.map((article,i) => {
-        let imgLink,username,name,userId;
+        let imgLink,username,name;
         users.forEach(user => {
           if (article.created_by === user.username) {
             imgLink = user.avatar_url;
             username = user.username;
             name = user.name;
-						userId = user._id;
           }
         });
   
@@ -27,20 +25,15 @@ import {fetchArticles} from '../../httpRequests';
               </p>
             </figure>
             
-              <div className="media-content" style={{ overflow: 'hidden' }}>
-                <div className="content">
-                  <p>
-                    <strong>{name || username }</strong><small>{ ` ${moment(article.created_at).format("MMM Do YY")}`}</small>
-                    <br/>
-                    <Link to={`article/:${article._id}`}><small>{article.title}</small></Link>
-                  </p>
-                </div> 												
-              </div>
-            {/* <div className="media-right">
-              <button className="delete"
-              onClick = {()=> deleteArticle(article._id)}
-              />
-            </div> */}
+            <div className="media-content" style={{ overflow: 'hidden' }}>
+              <div className="content">
+                <p>
+                  <strong>{name || username }</strong><small>{ ` ${moment(article.created_at).format("MMM Do YY")}`}</small>
+                  <br/>
+                  <Link to={`article/:${article._id}`}><small>{article.title}</small></Link>
+                </p>
+              </div> 												
+            </div>
           </article >
         )
       }); //  Map Finished    
@@ -52,16 +45,6 @@ import {fetchArticles} from '../../httpRequests';
       </div>
     )
   }   //    render
-
-  const deleteArticle = (articleId) => {
-		fetchArticles(`/articles/${articleId}`, 'DELETE')
-			.then(res =>{
-				// console.log(res)
-        // this.commentsFetch(this.state.articleId);
-        // <Redirect to="/" />
-			})
-			.catch(console.log);
-	}
 
 ArticleNode.propTypes = {
   filteredArticles: PT.array.isRequired,

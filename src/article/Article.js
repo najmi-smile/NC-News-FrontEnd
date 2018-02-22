@@ -22,7 +22,7 @@ class Article extends React.Component {
     fetchUsers('/users')
       .then(res => {
         this.setState({
-          users : res
+          users : res.users
         })
       })
   }  // componentDidMount

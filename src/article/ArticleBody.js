@@ -3,7 +3,6 @@ import Moment from "moment";
 import PT from "prop-types";
 import { Link } from 'react-router-dom';
 import VoteArticle from './voteArticle';
-import Footer from '../navigator/Footer';
 
 const ArticleBody = ({article,articleUser}) => ( 
   <div className='column isDark'>
@@ -21,7 +20,6 @@ const ArticleBody = ({article,articleUser}) => (
       <p>{article && article.title}</p>
       <code className="js customScroll">{article && article.body}</code>
     </div>
-    {/* <Footer /> */}
   </div>
 )
 

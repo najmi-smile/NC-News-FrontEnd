@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchArticles,fetchUsers} from '../httpRequests';
+import {fetchUsers} from '../httpRequests';
 import ArticlesPage from './left-side/ArticlesPage';
 import Weather from './right-side/Weather';
 import User from './right-side/user';
@@ -12,7 +12,7 @@ class HomePage extends React.Component {
     fetchUsers('/users')
     .then(res=>{
       this.setState({
-        users : res
+        users : res.users
       })
     })
     .catch(console.log);
