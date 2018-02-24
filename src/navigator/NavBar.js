@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <NavLink to='' className="navbar-item">
-        <span> The BLog</span>
+          <span> The BLog</span>
         </NavLink>
 
         <button className="button navbar-burger">
@@ -17,7 +17,7 @@ const NavBar = () => {
       </div>
       <div className="navbar-menu">
         <ul className="navbar-start">
-        <li className="navbar-item">
+          <li className="navbar-item">
             <div className="field is-grouped">
               <p className="control">
                 <NavLink to='' className="button">
@@ -88,7 +88,7 @@ const NavBar = () => {
         
       </div>
     </nav>
-  )
+  );
 };
 
 export default NavBar;

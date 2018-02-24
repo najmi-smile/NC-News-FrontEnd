@@ -13,6 +13,6 @@ const Footer = () => {
       </ul>
     </div>
   );
-}
+};
 
 export default Footer;

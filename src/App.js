@@ -11,14 +11,14 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-            <Link to="/"><img src ={require("./images/logo.png")} alt="NC Blog" className="logo"/></Link>
+            <Link to="/"><img src ={ require('./images/logo.png') } alt="NC Blog" className="logo"/></Link>
           </header>
           <Switch>
             <Route exact path='/article/:articleId'   component = {  Article } />
             <Route exact path='/'    component = { HomePage } />
             <Route exact path='/users/:username'    component = { User } />
 
-            <Route component = {NotFound} />
+            <Route component = { NotFound } />
           </Switch>
         </div>
       </BrowserRouter>      
