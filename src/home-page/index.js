@@ -20,7 +20,7 @@ class HomePage extends React.Component {
   render(){
     const { users } = this.state;
     if(users.length > 0) {
-      const user = users[Math.round(Math.random()*users.length-1)];
+      const user = users[0];
         return(
           <div className="home-wrapper">
             <div className="columns">

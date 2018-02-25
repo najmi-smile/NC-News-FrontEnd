@@ -75,7 +75,7 @@ class Comments extends React.Component {
 								/>
 							</div> 												
 						</div>
-						{username === 'northcoder' ?
+						{username === users[0].username ?
 							<div className="media-right">
 								<button className="delete"
 								onClick = {()=> this.deleteComment(comment._id)}
@@ -94,7 +94,7 @@ class Comments extends React.Component {
 				<div className='commentInput'> 
 					{articleId && 
 						<PostComment  
-							username={ 'northcoder' }
+							username={ users[0].username }
 							articleId={ articleId }
 							commentsFetch = { this.commentsFetch.bind(this) }
 						/> 
