@@ -5,11 +5,6 @@ import PostComment from './PostComment';
 import VoteComment from './VoteComment';
 import {fetchComments} from '../httpRequests';
 import { Link } from 'react-router-dom';
-
-//	TODOs
-//  Postcomment needs refreshing the state, 
-//	passed the commentsFetch but i think that gets attached with postcomment so dont recognise state
-//	Authenticate user for deletion
 class Comments extends React.Component {
 	state = {
 		comments: null,
@@ -38,7 +33,6 @@ class Comments extends React.Component {
 	deleteComment(commentId) {
 		fetchComments(`/articles/${this.state.articleId}/${commentId}`, 'DELETE')
 			.then(res =>{
-				// console.log(res)
 				this.commentsFetch(this.state.articleId);
 			})
 			.catch(console.log);
@@ -81,26 +75,28 @@ class Comments extends React.Component {
 								/>
 							</div> 												
 						</div>
-					<div className="media-right">
-						<button className="delete"
-						onClick = {()=> this.deleteComment(comment._id)}
-						/>
-					</div>
+						{username === 'northcoder' ?
+							<div className="media-right">
+								<button className="delete"
+								onClick = {()=> this.deleteComment(comment._id)}
+								/>
+							</div>
+							: null
+						}
 				</article >
         )
       }); //  Map Finished   
 		} //  if comments
 		
-		//	TODO need to provide the username
 		return (
 
 			<div className="column">
 				<div className='commentInput'> 
 					{articleId && 
-						<PostComment 
-							commentsFetch={this.commentsFetch} 
-							username={ 'grumpy19' }
+						<PostComment  
+							username={ 'northcoder' }
 							articleId={ articleId }
+							commentsFetch = { this.commentsFetch.bind(this) }
 						/> 
 					}         
         </div>

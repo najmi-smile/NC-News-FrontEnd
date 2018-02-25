@@ -29,7 +29,7 @@ below.
 
     $ cd FE-FT-NC-News
 
-    $ npm install(dependenceis)
+    $ npm install
 
 You will be getting the data from our [News API](https://github.com/najmi-smile/BE-FT-northcoders-news) server. [WEB LINK](https://quiet-shore-88770.herokuapp.com/)
 ### Start Application

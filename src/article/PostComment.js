@@ -48,7 +48,7 @@ class PostComment extends React.Component {
     if (e) e.preventDefault();
     const {comment} = this.state;
     this.setState({comment : ''});
-    const { commentsFetch, username, articleId } = this.props;    
+    const { commentsFetch,username, articleId } = this.props;    
     const obj = {
       body: comment,
       created_by: username,
@@ -57,8 +57,7 @@ class PostComment extends React.Component {
     }
     postComment(`/articles/${articleId}/addcomment`,obj)
       .then(res => {
-        console.log(res);
-        // commentsFetch(articleId);
+        commentsFetch(articleId);
       })
       .catch(console.log);
   }
