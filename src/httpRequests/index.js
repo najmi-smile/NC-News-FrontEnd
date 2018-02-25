@@ -1,6 +1,9 @@
+
+const http = 'https://quiet-shore-88770.herokuapp.com/api';
+
 export const fetchArticles =(url, method) => {
   method =  method || 'GET';
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{'method':method})
+  return fetch(http+url,{'method':method})
     .then(buffer => buffer.json())
     .then(res => {
       return res;    
@@ -8,7 +11,7 @@ export const fetchArticles =(url, method) => {
 };
 export const fetchUsers =(url, method) => {
   method =  method || 'GET';
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{'method':method})
+  return fetch(http+url,{'method':method})
     .then(buffer => buffer.json())
     .then(res => {
       return res;    
@@ -16,7 +19,7 @@ export const fetchUsers =(url, method) => {
 };
 export const fetchTopics =(url, method) => {
   method =  method || 'GET';
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{'method':method})
+  return fetch(http+url,{'method':method})
     .then(buffer => buffer.json())
     .then(res => {
       return res;    
@@ -24,14 +27,14 @@ export const fetchTopics =(url, method) => {
 };
 export const fetchComments =(url, method) => {
   method =  method || 'GET';
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{ 'method':method })
+  return fetch(http+url,{ 'method':method })
     .then(buffer => buffer.json())
     .then(res => {
       return res;    
     });
 };
 export const postComment =(url, update) => {
-  return fetch(`https://quiet-shore-88770.herokuapp.com/api${url}`,{
+  return fetch(http+url,{
     method:'POST',
     headers:{'Content-Type': 'application/json'},
     body: JSON.stringify(update)
